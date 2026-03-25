@@ -1,0 +1,771 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const filtros = [
+  { key: "all", label: "Todos" },
+  { key: "tableros", label: "Tableros" },
+  { key: "mediciones", label: "Mediciones" },
+  { key: "mantenimiento", label: "Mantenimiento" },
+] as const;
+
+const categoriaLabel: Record<string, string> = {
+  tableros: "Tableros",
+  mediciones: "Mediciones",
+  mantenimiento: "Mantenimiento",
+};
+
+const imagenes = [
+  {
+    categoria: "tableros",
+    titulo: "Tablero principal",
+    descripcion: "Montaje, adecuación y presentación técnica en campo.",
+    src: "/proyectos/tableros/tablero-01.jpg",
+    featured: true,
+    position: "object-center",
+  },
+  {
+    categoria: "tableros",
+    titulo: "Tablero de distribución",
+    descripcion: "Conexionado, orden interno y criterio de mantenimiento.",
+    src: "/proyectos/tableros/tablero-02.jpg",
+    position: "object-center",
+  },
+  {
+    categoria: "tableros",
+    titulo: "Tablero de maniobra",
+    descripcion: "Intervención técnica y verificación de componentes.",
+    src: "/proyectos/tableros/tablero-03.jpg",
+    position: "object-center",
+  },
+  {
+    categoria: "tableros",
+    titulo: "Detalle de tablero",
+    descripcion: "Ejecución y terminación sobre instalación existente.",
+    src: "/proyectos/tableros/tablero-04.jpg",
+    position: "object-center",
+  },
+  {
+    categoria: "tableros",
+    titulo: "Instalación terminada",
+    descripcion: "Protección, accesibilidad y orden visual del conjunto.",
+    src: "/proyectos/tableros/tablero-05.jpg",
+    position: "object-center",
+  },
+  {
+    categoria: "tableros",
+    titulo: "Configuración técnica",
+    descripcion: "Ajuste final y revisión operativa del tablero.",
+    src: "/proyectos/tableros/tablero-06.jpg",
+    position: "object-center",
+  },
+
+  {
+    categoria: "mediciones",
+    titulo: "Medición eléctrica en campo",
+    descripcion: "Control instrumental y validación de parámetros operativos.",
+    src: "/proyectos/mediciones/medicion-01.jpg",
+    featured: true,
+    position: "object-center",
+  },
+  {
+    categoria: "mediciones",
+    titulo: "Verificación de parámetros",
+    descripcion: "Lectura técnica para diagnóstico y control de instalación.",
+    src: "/proyectos/mediciones/medicion-02.jpg",
+    position: "object-center",
+  },
+  {
+    categoria: "mediciones",
+    titulo: "Relevamiento técnico",
+    descripcion: "Inspección en sitio y chequeo de condiciones reales.",
+    src: "/proyectos/mediciones/medicion-03.jpg",
+    position: "object-center",
+  },
+  {
+    categoria: "mediciones",
+    titulo: "Control instrumental",
+    descripcion: "Registro de medición sobre equipamiento instalado.",
+    src: "/proyectos/mediciones/medicion-04.jpg",
+    position: "object-center",
+  },
+  {
+    categoria: "mediciones",
+    titulo: "Verificación eléctrica",
+    descripcion: "Evaluación de funcionamiento y seguridad eléctrica.",
+    src: "/proyectos/mediciones/medicion-05.jpg",
+    position: "object-center",
+  },
+
+  {
+    categoria: "mantenimiento",
+    titulo: "Mantenimiento técnico",
+    descripcion: "Intervención correctiva y revisión integral en campo.",
+    src: "/proyectos/mantenimiento/mantenimiento-01.jpg",
+    featured: true,
+    position: "object-center",
+  },
+  {
+    categoria: "mantenimiento",
+    titulo: "Adecuación en obra",
+    descripcion: "Mejora de instalación con criterio técnico y operativo.",
+    src: "/proyectos/mantenimiento/mantenimiento-02.jpg",
+    position: "object-center",
+  },
+  {
+    categoria: "mantenimiento",
+    titulo: "Revisión de instalación",
+    descripcion: "Diagnóstico, ajuste y control de estado general.",
+    src: "/proyectos/mantenimiento/mantenimiento-03.jpg",
+    position: "object-center",
+  },
+  {
+    categoria: "mantenimiento",
+    titulo: "Intervención operativa",
+    descripcion: "Mantenimiento aplicado sobre instalación en servicio.",
+    src: "/proyectos/mantenimiento/mantenimiento-04.jpg",
+    position: "object-center",
+  },
+];
+---
+
+<Layout title="Galería técnica | Stuttgart">
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/70 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/#inicio" class="text-white text-xl font-bold tracking-tight">
+        Stuttgart
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm text-zinc-300">
+        <a href="/#inicio" class="hover:text-orange-400 transition">Inicio</a>
+        <a href="/galeria" class="text-white">Galería</a>
+        <a href="/#faq" class="hover:text-orange-400 transition">FAQ</a>
+        <a href="/#contacto" class="hover:text-orange-400 transition">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="relative overflow-hidden bg-black text-white px-6 pt-32 pb-16 md:pb-20">
+    <div class="absolute inset-0 bg-gradient-to-b from-orange-950/45 via-black to-black"></div>
+    <div class="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[680px] h-[680px] rounded-full bg-orange-500/10 blur-3xl"></div>
+
+    <div class="relative max-w-5xl mx-auto text-center reveal reveal-up">
+      <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
+        Galería técnica
+      </p>
+
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+        Trabajos ejecutados
+      </h1>
+
+      <p class="max-w-3xl mx-auto text-zinc-400 leading-8 text-lg">
+        Registro visual de instalaciones, mediciones y mantenimiento técnico
+        realizados en campo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filtros -->
+  <section class="bg-black text-white px-6 pb-10">
+    <div class="max-w-6xl mx-auto flex gap-3 flex-wrap justify-center reveal reveal-up">
+      {filtros.map((filtro) => (
+        <button
+          class:list={["gallery-filter", filtro.key === "all" && "is-active"]}
+          type="button"
+          data-filter={filtro.key}
+        >
+          {filtro.label}
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <!-- Grid -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black text-white px-6 pb-24">
+    <div class="absolute right-[-120px] top-20 w-[340px] h-[340px] rounded-full bg-orange-500/10 blur-3xl"></div>
+
+    <div
+      id="gallery-grid"
+      class="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 items-start xl:grid-flow-row-dense"
+    >
+      {imagenes.map((item) => (
+        <article
+          class:list={[
+            "gallery-item self-start group relative overflow-hidden rounded-[22px] border border-white/10 bg-zinc-950",
+            item.featured && "md:col-span-2",
+          ]}
+          data-category={item.categoria}
+          data-title={item.titulo}
+          data-caption={item.descripcion}
+          data-src={item.src}
+        >
+          <button
+            type="button"
+            class="image-trigger block w-full text-left"
+            aria-label={`Abrir imagen: ${item.titulo}`}
+          >
+            <div
+              class:list={[
+                "relative overflow-hidden bg-zinc-950",
+                item.featured ? "aspect-[16/10]" : "aspect-[4/3]",
+              ]}
+            >
+              <img
+                src={item.src}
+                alt={item.titulo}
+                class:list={[
+                  "gallery-image absolute inset-0 h-full w-full object-cover",
+                  item.position ?? "object-center",
+                ]}
+                loading="lazy"
+              />
+
+              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/28 to-black/5"></div>
+              <div class="absolute inset-0 ring-1 ring-inset ring-white/8"></div>
+
+              <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                <p class="text-orange-400 text-[11px] uppercase tracking-[0.22em] mb-2">
+                  {categoriaLabel[item.categoria]}
+                </p>
+                <h2 class="text-white text-xl md:text-2xl font-semibold leading-tight">
+                  {item.titulo}
+                </h2>
+                <p class="text-zinc-300/80 text-[13px] md:text-sm mt-2 leading-6 max-w-2xl">
+                  {item.descripcion}
+                </p>
+              </div>
+            </div>
+          </button>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="bg-black text-white px-6 pb-24">
+    <div class="max-w-6xl mx-auto rounded-[22px] border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 md:p-10 reveal reveal-up">
+      <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
+        Contacto técnico
+      </p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        ¿Necesitás una intervención técnica?
+      </h2>
+      <p class="max-w-2xl text-zinc-400 leading-8 mb-8">
+        Podemos relevar, instalar, medir y documentar tu proyecto con criterio
+        técnico y foco en seguridad operativa.
+      </p>
+
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="/#contacto"
+          class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105"
+        >
+          Solicitar contacto
+        </a>
+        <a
+          href="/#servicios"
+          class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black"
+        >
+          Ver servicios
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+    <div class="lightbox-backdrop"></div>
+
+    <button id="lightbox-close" class="lightbox-close" aria-label="Cerrar imagen">
+      ✕
+    </button>
+
+    <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="Imagen anterior">
+      ‹
+    </button>
+
+    <div class="lightbox-shell">
+      <img id="lightbox-image" src="" alt="" class="lightbox-image" />
+      <div class="lightbox-meta">
+        <p id="lightbox-category" class="lightbox-category"></p>
+        <h3 id="lightbox-title" class="lightbox-title"></h3>
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+      </div>
+    </div>
+
+    <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="Imagen siguiente">
+      ›
+    </button>
+  </div>
+</Layout>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = Array.from(document.querySelectorAll(".gallery-filter"));
+    const galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxCategory = document.getElementById("lightbox-category");
+    const lightboxTitle = document.getElementById("lightbox-title");
+    const lightboxCaption = document.getElementById("lightbox-caption");
+    const lightboxClose = document.getElementById("lightbox-close");
+    const lightboxPrev = document.getElementById("lightbox-prev");
+    const lightboxNext = document.getElementById("lightbox-next");
+
+    let currentVisibleItems = [...galleryItems];
+    let currentIndex = 0;
+    let closingTimeout;
+
+    const galleryRevealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const item = entry.target;
+          if (!(item instanceof HTMLElement) || item.classList.contains("is-hidden")) return;
+
+          item.classList.add("is-visible");
+          galleryRevealObserver.unobserve(item);
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -8% 0px",
+      }
+    );
+
+    const observeVisibleGalleryItems = (items) => {
+      items.forEach((item, index) => {
+        item.classList.remove("sequence-enter", "is-visible");
+        item.style.setProperty("--seq-delay", `${index * 70}ms`);
+        void item.offsetWidth;
+        item.classList.add("sequence-enter");
+        galleryRevealObserver.unobserve(item);
+        galleryRevealObserver.observe(item);
+      });
+    };
+
+    const applyFilter = (filter) => {
+      const visibleItems = [];
+
+      galleryItems.forEach((item) => {
+        const matches = filter === "all" || item.dataset.category === filter;
+
+        if (matches) {
+          item.classList.remove("is-hidden");
+          visibleItems.push(item);
+        } else {
+          item.classList.add("is-hidden");
+          item.classList.remove("is-visible", "sequence-enter");
+          galleryRevealObserver.unobserve(item);
+        }
+      });
+
+      currentVisibleItems = visibleItems;
+      observeVisibleGalleryItems(visibleItems);
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelector(".gallery-filter.is-active")?.classList.remove("is-active");
+        button.classList.add("is-active");
+        applyFilter(button.dataset.filter || "all");
+      });
+    });
+
+    const openLightbox = (item) => {
+      if (
+        !lightbox ||
+        !(lightboxImage instanceof HTMLImageElement) ||
+        !lightboxCategory ||
+        !lightboxTitle ||
+        !lightboxCaption
+      ) return;
+
+      clearTimeout(closingTimeout);
+
+      currentVisibleItems = galleryItems.filter(
+        (galleryItem) => !galleryItem.classList.contains("is-hidden")
+      );
+
+      currentIndex = currentVisibleItems.indexOf(item);
+
+      lightboxImage.src = item.dataset.src || "";
+      lightboxImage.alt = item.dataset.title || "";
+      lightboxTitle.textContent = item.dataset.title || "";
+      lightboxCaption.textContent = item.dataset.caption || "";
+      lightboxCategory.textContent = item.dataset.category || "";
+
+      lightbox.classList.remove("hidden", "is-closing");
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    };
+
+    const updateLightbox = (index) => {
+      if (
+        !(lightboxImage instanceof HTMLImageElement) ||
+        !lightboxCategory ||
+        !lightboxTitle ||
+        !lightboxCaption ||
+        currentVisibleItems.length === 0
+      ) return;
+
+      const safeIndex = (index + currentVisibleItems.length) % currentVisibleItems.length;
+      currentIndex = safeIndex;
+
+      const item = currentVisibleItems[safeIndex];
+      lightboxImage.src = item.dataset.src || "";
+      lightboxImage.alt = item.dataset.title || "";
+      lightboxTitle.textContent = item.dataset.title || "";
+      lightboxCaption.textContent = item.dataset.caption || "";
+      lightboxCategory.textContent = item.dataset.category || "";
+    };
+
+    const closeLightbox = () => {
+      if (!lightbox) return;
+
+      lightbox.classList.remove("is-open");
+      lightbox.classList.add("is-closing");
+
+      closingTimeout = window.setTimeout(() => {
+        if (
+          !(lightboxImage instanceof HTMLImageElement) ||
+          !lightboxTitle ||
+          !lightboxCaption ||
+          !lightboxCategory
+        ) return;
+
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("is-closing");
+        lightbox.setAttribute("aria-hidden", "true");
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        lightboxTitle.textContent = "";
+        lightboxCaption.textContent = "";
+        lightboxCategory.textContent = "";
+        document.body.style.overflow = "";
+      }, 260);
+    };
+
+    galleryItems.forEach((item) => {
+      const trigger = item.querySelector(".image-trigger");
+      trigger?.addEventListener("click", () => openLightbox(item));
+    });
+
+    lightboxClose?.addEventListener("click", closeLightbox);
+
+    lightbox?.addEventListener("click", (event) => {
+      if (
+        event.target === lightbox ||
+        event.target.classList.contains("lightbox-backdrop")
+      ) {
+        closeLightbox();
+      }
+    });
+
+    lightboxPrev?.addEventListener("click", () => {
+      updateLightbox(currentIndex - 1);
+    });
+
+    lightboxNext?.addEventListener("click", () => {
+      updateLightbox(currentIndex + 1);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox || lightbox.classList.contains("hidden")) return;
+
+      if (event.key === "Escape") closeLightbox();
+      if (event.key === "ArrowLeft") updateLightbox(currentIndex - 1);
+      if (event.key === "ArrowRight") updateLightbox(currentIndex + 1);
+    });
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => {
+      revealObserver.observe(el);
+    });
+
+    applyFilter("all");
+  });
+</script>
+
+<style>
+  .gallery-filter {
+    padding: 10px 18px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #a1a1aa;
+    background: rgba(255, 255, 255, 0.02);
+    transition:
+      color 0.25s ease,
+      border-color 0.25s ease,
+      background-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .gallery-filter:hover {
+    color: white;
+    border-color: rgba(251, 146, 60, 0.45);
+    transform: translateY(-1px);
+  }
+
+  .gallery-filter.is-active {
+    background: rgba(255, 255, 255, 0.96);
+    color: black;
+    border-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 10px 28px rgba(255, 255, 255, 0.08);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.75s ease,
+      transform 0.75s ease;
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gallery-item {
+    opacity: 0;
+    transform: translateY(28px) scale(0.988);
+    filter: brightness(0.78) blur(5px);
+    transition:
+      opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+    will-change: opacity, transform, filter;
+  }
+
+  .gallery-item.sequence-enter {
+    transition-delay: var(--seq-delay, 0ms);
+  }
+
+  .gallery-item.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: brightness(1) blur(0);
+  }
+
+  .gallery-item.is-hidden {
+    display: none !important;
+  }
+
+  .gallery-item:hover {
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.28);
+  }
+
+  .gallery-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition:
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.45s ease;
+  }
+
+  .gallery-item:hover .gallery-image {
+    transform: scale(1.045);
+    filter: brightness(1.03);
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  .lightbox.hidden {
+    display: none;
+  }
+
+  .lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.94);
+    opacity: 0;
+    transition: opacity 0.26s ease;
+  }
+
+  .lightbox-shell,
+  .lightbox-close,
+  .lightbox-nav {
+    position: relative;
+    z-index: 2;
+  }
+
+  .lightbox-shell {
+    width: min(1180px, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    transition:
+      opacity 0.26s ease,
+      transform 0.26s ease;
+  }
+
+  .lightbox.is-open .lightbox-backdrop {
+    opacity: 1;
+  }
+
+  .lightbox.is-open .lightbox-shell {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .lightbox.is-closing .lightbox-backdrop {
+    opacity: 0;
+  }
+
+  .lightbox.is-closing .lightbox-shell {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  .lightbox-image {
+    max-width: min(1180px, 100%);
+    max-height: 76vh;
+    border-radius: 24px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+  }
+
+  .lightbox-meta {
+    width: min(1180px, 100%);
+    padding-top: 1rem;
+    text-align: center;
+  }
+
+  .lightbox-category {
+    color: rgb(251 146 60);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-bottom: 0.5rem;
+  }
+
+  .lightbox-title {
+    color: white;
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .lightbox-caption {
+    color: #a1a1aa;
+    line-height: 1.8;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 46px;
+    height: 46px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .lightbox.is-open .lightbox-close,
+  .lightbox.is-open .lightbox-nav {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .lightbox.is-closing .lightbox-close,
+  .lightbox.is-closing .lightbox-nav {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .lightbox-close:hover {
+    background: white;
+    color: black;
+  }
+
+  .lightbox-nav {
+    width: 52px;
+    height: 52px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .lightbox-nav:hover {
+    background: white;
+    color: black;
+  }
+
+  @media (max-width: 768px) {
+    .lightbox {
+      padding: 1rem;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      bottom: 22px;
+      z-index: 2;
+      width: 46px;
+      height: 46px;
+      font-size: 1.7rem;
+    }
+
+    .lightbox-prev {
+      left: 18px;
+    }
+
+    .lightbox-next {
+      right: 18px;
+    }
+
+    .lightbox-image {
+      max-height: 68vh;
+      border-radius: 18px;
+    }
+  }
+</style>
