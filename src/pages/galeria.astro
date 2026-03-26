@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 const filtros = [
   { key: "all", label: "Todos" },
@@ -129,26 +131,12 @@ const imagenes = [
 ---
 
 <Layout title="Galería técnica | Stuttgart">
-  <!-- Navbar -->
-  <nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/70 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/#inicio" class="text-white text-xl font-bold tracking-tight">
-        Stuttgart
-      </a>
-
-      <div class="hidden md:flex items-center gap-8 text-sm text-zinc-300">
-        <a href="/#inicio" class="hover:text-orange-400 transition">Inicio</a>
-        <a href="/galeria" class="text-white">Galería</a>
-        <a href="/#faq" class="hover:text-orange-400 transition">FAQ</a>
-        <a href="/#contacto" class="hover:text-orange-400 transition">Contacto</a>
-      </div>
-    </div>
-  </nav>
+  <Navbar currentPage="galeria" />
 
   <!-- Header -->
   <section class="relative overflow-hidden bg-black text-white px-6 pt-32 pb-16 md:pb-20">
-    <div class="absolute inset-0 bg-gradient-to-b from-orange-950/45 via-black to-black"></div>
-    <div class="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[680px] h-[680px] rounded-full bg-orange-500/10 blur-3xl"></div>
+    <div class="absolute inset-0 bg-linear-to-b from-orange-950/45 via-black to-black"></div>
+    <div class="absolute -top-30 left-1/2 -translate-x-1/2 w-170 h-170 rounded-full bg-orange-500/10 blur-3xl"></div>
 
     <div class="relative max-w-5xl mx-auto text-center reveal reveal-up">
       <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
@@ -182,8 +170,8 @@ const imagenes = [
   </section>
 
   <!-- Grid -->
-  <section class="relative overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black text-white px-6 pb-24">
-    <div class="absolute right-[-120px] top-20 w-[340px] h-[340px] rounded-full bg-orange-500/10 blur-3xl"></div>
+  <section class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 pb-24">
+    <div class="absolute -right-30 top-20 w-85 h-85 rounded-full bg-orange-500/10 blur-3xl"></div>
 
     <div
       id="gallery-grid"
@@ -208,7 +196,7 @@ const imagenes = [
             <div
               class:list={[
                 "relative overflow-hidden bg-zinc-950",
-                item.featured ? "aspect-[16/10]" : "aspect-[4/3]",
+                item.featured ? "aspect-16/10" : "aspect-4/3",
               ]}
             >
               <img
@@ -221,7 +209,7 @@ const imagenes = [
                 loading="lazy"
               />
 
-              <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/28 to-black/5"></div>
+              <div class="absolute inset-0 bg-linear-to-t from-black/95 via-black/28 to-black/5"></div>
               <div class="absolute inset-0 ring-1 ring-inset ring-white/8"></div>
 
               <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
@@ -244,7 +232,7 @@ const imagenes = [
 
   <!-- CTA final -->
   <section class="bg-black text-white px-6 pb-24">
-    <div class="max-w-6xl mx-auto rounded-[22px] border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 md:p-10 reveal reveal-up">
+    <div class="max-w-6xl mx-auto rounded-[22px] border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-8 md:p-10 reveal reveal-up">
       <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
         Contacto técnico
       </p>
@@ -298,12 +286,14 @@ const imagenes = [
       ›
     </button>
   </div>
+
+  <Footer />
 </Layout>
 
 <script>
   window.addEventListener("DOMContentLoaded", () => {
-    const filterButtons = Array.from(document.querySelectorAll(".gallery-filter"));
-    const galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
+    const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".gallery-filter"));
+    const galleryItems = Array.from(document.querySelectorAll<HTMLElement>(".gallery-item"));
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightbox-image");
@@ -314,9 +304,9 @@ const imagenes = [
     const lightboxPrev = document.getElementById("lightbox-prev");
     const lightboxNext = document.getElementById("lightbox-next");
 
-    let currentVisibleItems = [...galleryItems];
+    let currentVisibleItems: HTMLElement[] = [...galleryItems];
     let currentIndex = 0;
-    let closingTimeout;
+    let closingTimeout: number | undefined;
 
     const galleryRevealObserver = new IntersectionObserver(
       (entries) => {
@@ -336,7 +326,7 @@ const imagenes = [
       }
     );
 
-    const observeVisibleGalleryItems = (items) => {
+    const observeVisibleGalleryItems = (items: HTMLElement[]) => {
       items.forEach((item, index) => {
         item.classList.remove("sequence-enter", "is-visible");
         item.style.setProperty("--seq-delay", `${index * 70}ms`);
@@ -347,8 +337,8 @@ const imagenes = [
       });
     };
 
-    const applyFilter = (filter) => {
-      const visibleItems = [];
+    const applyFilter = (filter: string) => {
+      const visibleItems: HTMLElement[] = [];
 
       galleryItems.forEach((item) => {
         const matches = filter === "all" || item.dataset.category === filter;
@@ -375,16 +365,20 @@ const imagenes = [
       });
     });
 
-    const openLightbox = (item) => {
+    const openLightbox = (item: HTMLElement) => {
       if (
         !lightbox ||
         !(lightboxImage instanceof HTMLImageElement) ||
-        !lightboxCategory ||
-        !lightboxTitle ||
-        !lightboxCaption
-      ) return;
+        !(lightboxCategory instanceof HTMLElement) ||
+        !(lightboxTitle instanceof HTMLElement) ||
+        !(lightboxCaption instanceof HTMLElement)
+      ) {
+        return;
+      }
 
-      clearTimeout(closingTimeout);
+      if (closingTimeout !== undefined) {
+        window.clearTimeout(closingTimeout);
+      }
 
       currentVisibleItems = galleryItems.filter(
         (galleryItem) => !galleryItem.classList.contains("is-hidden")
@@ -404,19 +398,22 @@ const imagenes = [
       document.body.style.overflow = "hidden";
     };
 
-    const updateLightbox = (index) => {
+    const updateLightbox = (index: number) => {
       if (
         !(lightboxImage instanceof HTMLImageElement) ||
-        !lightboxCategory ||
-        !lightboxTitle ||
-        !lightboxCaption ||
+        !(lightboxCategory instanceof HTMLElement) ||
+        !(lightboxTitle instanceof HTMLElement) ||
+        !(lightboxCaption instanceof HTMLElement) ||
         currentVisibleItems.length === 0
-      ) return;
+      ) {
+        return;
+      }
 
       const safeIndex = (index + currentVisibleItems.length) % currentVisibleItems.length;
       currentIndex = safeIndex;
 
       const item = currentVisibleItems[safeIndex];
+
       lightboxImage.src = item.dataset.src || "";
       lightboxImage.alt = item.dataset.title || "";
       lightboxTitle.textContent = item.dataset.title || "";
@@ -433,10 +430,12 @@ const imagenes = [
       closingTimeout = window.setTimeout(() => {
         if (
           !(lightboxImage instanceof HTMLImageElement) ||
-          !lightboxTitle ||
-          !lightboxCaption ||
-          !lightboxCategory
-        ) return;
+          !(lightboxTitle instanceof HTMLElement) ||
+          !(lightboxCaption instanceof HTMLElement) ||
+          !(lightboxCategory instanceof HTMLElement)
+        ) {
+          return;
+        }
 
         lightbox.classList.add("hidden");
         lightbox.classList.remove("is-closing");
@@ -451,17 +450,17 @@ const imagenes = [
     };
 
     galleryItems.forEach((item) => {
-      const trigger = item.querySelector(".image-trigger");
+      const trigger = item.querySelector<HTMLButtonElement>(".image-trigger");
       trigger?.addEventListener("click", () => openLightbox(item));
     });
 
     lightboxClose?.addEventListener("click", closeLightbox);
 
     lightbox?.addEventListener("click", (event) => {
-      if (
-        event.target === lightbox ||
-        event.target.classList.contains("lightbox-backdrop")
-      ) {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      if (target === lightbox || target.classList.contains("lightbox-backdrop")) {
         closeLightbox();
       }
     });
@@ -486,14 +485,17 @@ const imagenes = [
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            const target = entry.target;
+            if (target instanceof HTMLElement) {
+              target.classList.add("is-visible");
+            }
           }
         });
       },
       { threshold: 0.15 }
     );
 
-    document.querySelectorAll(".reveal").forEach((el) => {
+    document.querySelectorAll<HTMLElement>(".reveal").forEach((el) => {
       revealObserver.observe(el);
     });
 
@@ -656,6 +658,19 @@ const imagenes = [
     max-height: 76vh;
     border-radius: 24px;
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transform: scale(0.96);
+    transition: opacity 0.26s ease, transform 0.26s ease;
+  }
+
+  .lightbox.is-open .lightbox-image {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .lightbox.is-closing .lightbox-image {
+    opacity: 0;
+    transform: scale(0.94);
   }
 
   .lightbox-meta {

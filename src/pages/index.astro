@@ -1,44 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Stuttgart Ingeniería Electrónica">
-  <!-- Navbar -->
-  <nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/70 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#inicio" class="text-white text-xl font-bold tracking-tight">
-        Stuttgart
-      </a>
-
-      <div class="hidden md:flex items-center gap-8 text-sm text-zinc-300">
-        <a href="#inicio" class="hover:text-orange-400 transition">Inicio</a>
-        <a href="#about" class="hover:text-orange-400 transition">Nosotros</a>
-        <a href="#servicios" class="hover:text-orange-400 transition">Servicios</a>
-        <a href="#proyectos" class="hover:text-orange-400 transition">Proyectos</a>
-        <a href="/galeria" class="hover:text-orange-400 transition">Galería</a>
-        <a href="#faq" class="hover:text-orange-400 transition">FAQ</a>
-        <a href="#contacto" class="hover:text-orange-400 transition">Contacto</a>
-      </div>
-    </div>
-  </nav>
+  <Navbar isHome={true} currentPage="home" />
 
   <!-- Hero -->
   <header
     id="inicio"
     class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white px-6 pt-24"
   >
-    <div class="absolute inset-0 bg-gradient-to-b from-orange-950/50 via-black to-black"></div>
-    <div class="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-orange-500/20 blur-3xl"></div>
-    <div class="absolute bottom-[-150px] right-[-120px] w-[450px] h-[450px] rounded-full bg-amber-400/10 blur-3xl"></div>
+    <div class="absolute inset-0 bg-linear-to-b from-orange-950/50 via-black to-black"></div>
+    <div class="absolute -top-30 left-1/2 -translate-x-1/2 w-175 h-175 rounded-full bg-orange-500/20 blur-3xl"></div>
+    <div class="absolute -bottom-37.5 -right-30 w-112.5 h-112.5 rounded-full bg-amber-400/10 blur-3xl"></div>
 
     <div class="relative z-10 max-w-5xl text-center reveal reveal-up">
-      <p class="inline-block mb-4 rounded-full border border-orange-400/20 bg-orange-500/10 px-4 py-1 text-sm text-orange-300">
-        Ingeniería eléctrica y electrónica aplicada
-      </p>
+      <img src="/logos/stuttgart-logo.svg" alt="Stuttgart Ingeniería Electrónica" class="mb-4 h-16 md:h-20 mx-auto" />
 
       <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
         Soluciones técnicas para
-        <span class="block bg-gradient-to-r from-orange-300 via-orange-500 to-amber-300 bg-clip-text text-transparent">
+        <span class="block bg-linear-to-r from-orange-300 via-orange-500 to-amber-300 bg-clip-text text-transparent">
           tableros, mediciones y seguridad eléctrica
         </span>
       </h1>
@@ -70,9 +53,9 @@ import Layout from "../layouts/Layout.astro";
   <!-- About -->
   <section
     id="about"
-    class="relative overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black text-white px-6 py-24"
+    class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 py-24"
   >
-    <div class="absolute -top-20 right-0 w-[420px] h-[420px] rounded-full bg-orange-500/10 blur-3xl"></div>
+    <div class="absolute -top-20 right-0 w-105 h-105 rounded-full bg-orange-500/10 blur-3xl"></div>
 
     <div class="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       <div class="reveal reveal-left">
@@ -100,7 +83,7 @@ import Layout from "../layouts/Layout.astro";
         </p>
       </div>
 
-      <div class="reveal reveal-right rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 shadow-2xl">
+      <div class="reveal reveal-right rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-8 shadow-2xl">
         <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-4">
           Enfoque de trabajo
         </p>
@@ -141,9 +124,9 @@ import Layout from "../layouts/Layout.astro";
   <!-- Servicios -->
   <section
     id="servicios"
-    class="relative overflow-hidden bg-gradient-to-b from-black via-orange-950/10 to-black text-white px-6 py-24"
+    class="relative overflow-hidden bg-linear-to-b from-black via-orange-950/10 to-black text-white px-6 py-24"
   >
-    <div class="absolute left-[-100px] top-10 w-[320px] h-[320px] rounded-full bg-amber-500/10 blur-3xl"></div>
+    <div class="absolute -left-25 top-10 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl"></div>
 
     <div class="relative max-w-6xl mx-auto">
       <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3 reveal reveal-up">
@@ -154,7 +137,7 @@ import Layout from "../layouts/Layout.astro";
       </h2>
 
       <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
+        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
           <h3 class="text-2xl font-semibold mb-3">Instalación de tableros</h3>
           <p class="text-zinc-400 leading-7">
             Montaje, conexionado, adecuación y puesta en servicio de tableros eléctricos
@@ -162,7 +145,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </article>
 
-        <article class="reveal reveal-up delay-1 rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
+        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
           <h3 class="text-2xl font-semibold mb-3">Mediciones eléctricas</h3>
           <p class="text-zinc-400 leading-7">
             Relevamientos técnicos, controles de parámetros eléctricos, verificación de
@@ -170,7 +153,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </article>
 
-        <article class="reveal reveal-up delay-2 rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
+        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
           <h3 class="text-2xl font-semibold mb-3">Puesta a tierra y PAT</h3>
           <p class="text-zinc-400 leading-7">
             Ensayos de puesta a tierra, medición de resistencia, verificaciones PAT y
@@ -178,7 +161,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </article>
 
-        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
+        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
           <h3 class="text-2xl font-semibold mb-3">Mantenimiento técnico</h3>
           <p class="text-zinc-400 leading-7">
             Mantenimiento preventivo y correctivo de tableros, sistemas de protección,
@@ -186,7 +169,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </article>
 
-        <article class="reveal reveal-up delay-1 rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
+        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
           <h3 class="text-2xl font-semibold mb-3">Diagnóstico y adecuaciones</h3>
           <p class="text-zinc-400 leading-7">
             Detección de fallas, revisión de instalaciones existentes y propuestas de
@@ -194,7 +177,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </article>
 
-        <article class="reveal reveal-up delay-2 rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
+        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
           <h3 class="text-2xl font-semibold mb-3">Asistencia en ingeniería</h3>
           <p class="text-zinc-400 leading-7">
             Soporte técnico para proyectos, documentación, relevamientos en obra y
@@ -208,9 +191,9 @@ import Layout from "../layouts/Layout.astro";
   <!-- Proyectos -->
   <section
     id="proyectos"
-    class="relative overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black text-white px-6 py-24"
+    class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 py-24"
   >
-    <div class="absolute right-[-100px] top-20 w-[360px] h-[360px] rounded-full bg-orange-500/10 blur-3xl"></div>
+    <div class="absolute -right-25 top-20 w-90 h-90 rounded-full bg-orange-500/10 blur-3xl"></div>
 
     <div class="relative max-w-6xl mx-auto">
       <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3 reveal reveal-up">
@@ -221,8 +204,8 @@ import Layout from "../layouts/Layout.astro";
       </h2>
 
       <div class="grid md:grid-cols-2 gap-8">
-        <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
-          <div class="aspect-[16/10] w-full overflow-hidden bg-black">
+        <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
+          <div class="aspect-16/10 w-full overflow-hidden bg-black">
             <img
               src="/proyectos/tableros/tablero-01.jpg"
               alt="Instalación de tablero eléctrico"
@@ -242,8 +225,8 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </article>
 
-        <article class="reveal reveal-up delay-1 group overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
-          <div class="aspect-[16/10] w-full overflow-hidden bg-black">
+        <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
+          <div class="aspect-16/10 w-full overflow-hidden bg-black">
             <img
               src="/proyectos/mediciones/medicion-01.jpg"
               alt="Medición eléctrica en campo"
@@ -263,8 +246,8 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </article>
 
-        <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
-          <div class="aspect-[16/10] w-full overflow-hidden bg-black">
+        <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
+          <div class="aspect-16/10 w-full overflow-hidden bg-black">
             <img
               src="/proyectos/mediciones/medicion-02.jpg"
               alt="Verificación técnica de instalación"
@@ -284,8 +267,8 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </article>
 
-        <article class="reveal reveal-up delay-1 group overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
-          <div class="aspect-[16/10] w-full overflow-hidden bg-black">
+        <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
+          <div class="aspect-16/10 w-full overflow-hidden bg-black">
             <img
               src="/proyectos/mantenimiento/mantenimiento-01.jpg"
               alt="Mantenimiento técnico de tablero"
@@ -311,11 +294,11 @@ import Layout from "../layouts/Layout.astro";
   <!-- Contacto -->
   <section
     id="contacto"
-    class="relative overflow-hidden bg-gradient-to-b from-black via-orange-950/10 to-black text-white px-6 py-24"
+    class="relative overflow-hidden bg-linear-to-b from-black via-orange-950/10 to-black text-white px-6 py-24"
   >
-    <div class="absolute left-0 bottom-0 w-[340px] h-[340px] rounded-full bg-orange-500/10 blur-3xl"></div>
+    <div class="absolute left-0 bottom-0 w-85 h-85 rounded-full bg-orange-500/10 blur-3xl"></div>
 
-    <div class="relative max-w-6xl mx-auto rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-10 md:p-14 reveal reveal-up">
+    <div class="relative max-w-6xl mx-auto rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-10 md:p-14 reveal reveal-up">
       <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3">Contacto</p>
       <h2 class="text-4xl md:text-5xl font-bold mb-6">
         Hablemos de tu próximo requerimiento técnico
@@ -328,17 +311,21 @@ import Layout from "../layouts/Layout.astro";
 
       <div class="flex flex-wrap gap-4">
         <a
-          href="#"
+          href="https://wa.me/5491169679546"
           class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           WhatsApp
         </a>
 
         <a
-          href="#"
+          href="https://www.instagram.com/stuttingenieria/"
           class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          LinkedIn
+          Instagram
         </a>
 
         <a
@@ -347,6 +334,13 @@ import Layout from "../layouts/Layout.astro";
         >
           Email
         </a>
+
+        <a
+          href="/unite"
+          class="rounded-xl border border-orange-400/40 px-6 py-3 font-medium text-white transition hover:border-orange-400/80 hover:bg-orange-400/10"
+        >
+          Únete al equipo
+        </a>
       </div>
     </div>
   </section>
@@ -354,9 +348,9 @@ import Layout from "../layouts/Layout.astro";
   <!-- FAQ -->
   <section
     id="faq"
-    class="relative overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black text-white px-6 pb-24"
+    class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 pb-24"
   >
-    <div class="absolute right-0 top-0 w-[300px] h-[300px] rounded-full bg-amber-500/10 blur-3xl"></div>
+    <div class="absolute right-0 top-0 w-75 h-75 rounded-full bg-amber-500/10 blur-3xl"></div>
 
     <div class="relative max-w-6xl mx-auto">
       <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3 reveal reveal-up">
@@ -367,7 +361,7 @@ import Layout from "../layouts/Layout.astro";
       </h2>
 
       <div class="space-y-4">
-        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
+        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
           <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
             ¿Qué tipo de servicios realiza Stuttgart?
             <span class="text-orange-400 transition group-open:rotate-45">+</span>
@@ -379,7 +373,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </details>
 
-        <details class="reveal reveal-up delay-1 group rounded-2xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
+        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
           <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
             ¿Realizan mediciones y verificaciones técnicas?
             <span class="text-orange-400 transition group-open:rotate-45">+</span>
@@ -390,7 +384,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </details>
 
-        <details class="reveal reveal-up delay-2 group rounded-2xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
+        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
           <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
             ¿Pueden intervenir en instalaciones existentes?
             <span class="text-orange-400 transition group-open:rotate-45">+</span>
@@ -401,7 +395,7 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </details>
 
-        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
+        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
           <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
             ¿Trabajan tanto en obra nueva como en mantenimiento?
             <span class="text-orange-400 transition group-open:rotate-45">+</span>
@@ -412,19 +406,21 @@ import Layout from "../layouts/Layout.astro";
           </p>
         </details>
 
-        <details class="reveal reveal-up delay-1 group rounded-2xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
+        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
           <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
             ¿Cómo puedo solicitar una consulta técnica?
             <span class="text-orange-400 transition group-open:rotate-45">+</span>
           </summary>
           <p class="mt-4 text-zinc-400 leading-7">
-            Podés contactarnos por WhatsApp, correo electrónico o LinkedIn para coordinar
+            Podés contactarnos por WhatsApp o correo electrónico para coordinar
             un primer relevamiento o consulta según tu necesidad.
           </p>
         </details>
       </div>
     </div>
   </section>
+
+  <Footer />
 </Layout>
 
 <script>
@@ -462,6 +458,44 @@ import Layout from "../layouts/Layout.astro";
     transform: translateX(-36px);
   }
 
+  /* Animación FAQ details */
+  details {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  details[open] {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    border-color: rgba(251, 146, 60, 0.45);
+  }
+
+  details > summary {
+    list-style: none;
+    outline: none;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details p {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    margin: 0;
+    transition:
+      max-height 0.35s ease,
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  details[open] p {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .reveal-right {
     transform: translateX(36px);
   }
@@ -471,11 +505,63 @@ import Layout from "../layouts/Layout.astro";
     transform: translate(0, 0);
   }
 
-  .delay-1 {
-    transition-delay: 0.15s;
+  @media (max-width: 768px) {
+    header#inicio {
+      min-height: 72vh;
+      padding-top: 16rem;
+      padding-bottom: 2.5rem;
+    }
+
+    header#inicio h1 {
+      font-size: 2.1rem;
+      line-height: 1.2;
+    }
+
+    header#inicio p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .max-w-6xl {
+      max-width: 100% !important;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+
+    .space-y-4 > details {
+      margin-bottom: 0.75rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rounded-3xl,
+    .rounded-2xl {
+      border-radius: 1rem;
+    }
+
+    .px-6, .px-8 {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+
+    .py-24 {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
+    }
+
+    .grid.md\:grid-cols-2,
+    .grid.md\:grid-cols-3,
+    .grid.md\:grid-cols-4 {
+      grid-template-columns: 1fr !important;
+    }
   }
 
-  .delay-2 {
-    transition-delay: 0.3s;
-  }
 </style>

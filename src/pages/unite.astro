@@ -1,0 +1,212 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Unite a Stuttgart">
+  <Navbar currentPage="unite" />
+
+  <!-- Header -->
+  <section class="relative overflow-hidden bg-black text-white px-6 pt-32 pb-16 md:pb-20">
+    <div class="absolute inset-0 bg-linear-to-b from-orange-950/45 via-black to-black"></div>
+    <div class="absolute -top-30 left-1/2 -translate-x-1/2 w-170 h-170 rounded-full bg-orange-500/10 blur-3xl"></div>
+
+    <div class="relative max-w-4xl mx-auto text-center reveal-block">
+      <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
+        Equipo
+      </p>
+
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+        Unite a Stuttgart
+      </h1>
+
+      <p class="max-w-3xl mx-auto text-zinc-400 leading-8 text-lg">
+        Completá el formulario y contanos tu perfil, experiencia e interés en formar parte del equipo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Formulario -->
+  <section class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 pb-24">
+    <div class="absolute -right-30 top-20 w-85 h-85 rounded-full bg-orange-500/10 blur-3xl"></div>
+
+    <div class="relative max-w-3xl mx-auto">
+      <div class="rounded-[22px] border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-8 md:p-10 reveal-block">
+        <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
+          Postulación
+        </p>
+
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          Formulario de ingreso
+        </h2>
+
+        <p class="text-zinc-400 leading-8 mb-8">
+          Buscamos perfiles comprometidos con la calidad, la seguridad y el trabajo técnico en obra.
+        </p>
+
+        <form id="form-unite" class="space-y-5">
+          <div>
+            <label class="block text-sm text-zinc-300 mb-2">Nombre y apellido</label>
+            <input
+              type="text"
+              name="nombre"
+              required
+              class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-orange-400/50"
+              placeholder="Tu nombre completo"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm text-zinc-300 mb-2">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-orange-400/50"
+              placeholder="tuemail@ejemplo.com"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm text-zinc-300 mb-2">Teléfono</label>
+            <input
+              type="text"
+              name="telefono"
+              required
+              class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-orange-400/50"
+              placeholder="Tu número"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm text-zinc-300 mb-2">Perfil o puesto</label>
+            <input
+              type="text"
+              name="perfil"
+              class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-orange-400/50"
+              placeholder="Ej: técnico electricista, administrativo, ayudante de obra"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm text-zinc-300 mb-2">Experiencia</label>
+            <textarea
+              name="experiencia"
+              rows="5"
+              required
+              class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-orange-400/50"
+              placeholder="Contanos brevemente tu experiencia"
+            ></textarea>
+          </div>
+
+          <div>
+            <label class="block text-sm text-zinc-300 mb-2">Link a CV (opcional)</label>
+            <input
+              type="text"
+              name="cv"
+              class="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition focus:border-orange-400/50"
+              placeholder="https://..."
+            />
+          </div>
+
+          <div class="pt-2">
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center rounded-xl bg-linear-to-r from-orange-500 to-amber-500 px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-[0_12px_30px_rgba(249,115,22,0.28)] transition hover:scale-[1.02]"
+            >
+              Enviar postulación
+            </button>
+          </div>
+
+          <p id="estado-form-unite" class="text-sm text-zinc-400"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.16,
+        rootMargin: "0px 0px -8% 0px",
+      }
+    );
+
+    document.querySelectorAll(".reveal-block").forEach((el) => {
+      revealObserver.observe(el);
+    });
+
+    const form = document.getElementById("form-unite");
+    const estado = document.getElementById("estado-form-unite");
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if (!(form instanceof HTMLFormElement) || !(estado instanceof HTMLElement)) return;
+
+      estado.textContent = "Enviando...";
+
+      const formData = new FormData(form);
+
+      const data = {
+        nombre: formData.get("nombre"),
+        email: formData.get("email"),
+        telefono: formData.get("telefono"),
+        perfil: formData.get("perfil"),
+        experiencia: formData.get("experiencia"),
+        cv: formData.get("cv"),
+      };
+
+      try {
+        const res = await fetch("/api/form-unite", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const json = await res.json();
+
+        if (res.ok) {
+          estado.textContent = "Postulación enviada correctamente.";
+          form.reset();
+        } else {
+          estado.textContent = json.error || "Ocurrió un error al enviar.";
+        }
+      } catch (error) {
+        estado.textContent = "Error de conexión.";
+      }
+    });
+  });
+</script>
+
+<style>
+  .reveal-block {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(5px) brightness(0.9);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-block.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0) brightness(1);
+  }
+</style>

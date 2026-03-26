@@ -1,0 +1,40 @@
+---
+interface Props {
+  isHome?: boolean;
+  currentPage?: 'home' | 'galeria' | 'unite';
+}
+
+const { isHome = false, currentPage = 'home' } = Astro.props;
+---
+
+<nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/70 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 text-white font-bold tracking-tight hover:opacity-80 transition">
+      <img src="/logos/stuttgart-logo.svg" alt="Stuttgart Logo" class="h-8 md:h-10" />
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-300">
+      {isHome ? (
+        <>
+          <a href="#inicio" class="hover:text-orange-400 transition">Inicio</a>
+          <a href="#about" class="hover:text-orange-400 transition">Nosotros</a>
+          <a href="#servicios" class="hover:text-orange-400 transition">Servicios</a>
+          <a href="#proyectos" class="hover:text-orange-400 transition">Proyectos</a>
+          <a href="/galeria" class={currentPage === 'galeria' ? 'text-orange-400' : 'hover:text-orange-400 transition'}>Galería</a>
+          <a href="#contacto" class="hover:text-orange-400 transition">Contacto</a>
+          <a href="#faq" class="hover:text-orange-400 transition">FAQ</a>
+        </>
+      ) : (
+        <>
+          <a href="/#inicio" class="hover:text-orange-400 transition">Inicio</a>
+          <a href="/#about" class="hover:text-orange-400 transition">Nosotros</a>
+          <a href="/#servicios" class="hover:text-orange-400 transition">Servicios</a>
+          <a href="/#proyectos" class="hover:text-orange-400 transition">Proyectos</a>
+          <a href="/galeria" class={currentPage === 'galeria' ? 'text-orange-400' : 'hover:text-orange-400 transition'}>Galería</a>
+          <a href="/#contacto" class="hover:text-orange-400 transition">Contacto</a>
+          <a href="/#faq" class="hover:text-orange-400 transition">FAQ</a>
+        </>
+      )}
+    </div>
+  </div>
+</nav>
