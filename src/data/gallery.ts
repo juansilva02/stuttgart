@@ -35,8 +35,8 @@ import mant04 from "../assets/gallery/mantenimiento/mantenimiento-04.jpg";
 import mant05 from "../assets/gallery/mantenimiento/mantenimiento-05.jpg";
 import mant06 from "../assets/gallery/mantenimiento/mantenimiento-06.jpg";
 import mant07 from "../assets/gallery/mantenimiento/mantenimiento-07.jpg";
-import mant07 from "../assets/gallery/mantenimiento/mantenimiento-08.jpg";
-import mant07 from "../assets/gallery/mantenimiento/mantenimiento-09.jpg";
+import mant08 from "../assets/gallery/mantenimiento/mantenimiento-08.jpg";
+import mant09 from "../assets/gallery/mantenimiento/mantenimiento-09.jpg";
  
 // Proyecto 4
 import p4_main  from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-01.jpg";
