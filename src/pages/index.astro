@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
  
 // ── Imágenes del hero / proyectos ────────────────────────────────────────────
-import logo from "./public/logos/stuttgart-logo.svg";
 import tablero01 from "../assets/gallery/tableros/tablero-01.jpg";
 import medicion01 from "../assets/gallery/mediciones/medicion-01.jpg";
 import medicion02 from "../assets/gallery/mediciones/medicion-02.jpg";
@@ -25,8 +24,8 @@ import p4_7 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-07.jpg";
     <div class="absolute -bottom-37.5 -right-30 w-112.5 h-112.5 rounded-full bg-amber-400/10 blur-3xl pointer-events-none"></div>
  
     <div class="relative z-10 max-w-5xl text-center reveal reveal-up">
-      <Image
-        src={logo}
+      <img
+        src="/logos/stuttgart-logo.svg"
         alt="Stuttgart Ingeniería Electrónica"
         class="mb-6 h-16 md:h-20 w-auto mx-auto"
       />
