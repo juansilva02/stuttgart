@@ -1,97 +1,108 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+ 
+// ── Imágenes del hero / proyectos ────────────────────────────────────────────
+import logo from "./public/logos/stuttgart-logo.svg";
+import tablero01 from "../assets/gallery/tableros/tablero-01.jpg";
+import medicion01 from "../assets/gallery/mediciones/medicion-01.jpg";
+import medicion02 from "../assets/gallery/mediciones/medicion-02.jpg";
+import p4_7 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-07.jpg";
 ---
-
+ 
 <Layout title="Stuttgart Ingeniería Electrónica">
   <Navbar isHome={true} currentPage="home" />
-
-  <!-- Hero -->
+ 
+  <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
   <header
     id="inicio"
     class="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white px-6 pt-24"
   >
     <div class="absolute inset-0 bg-linear-to-b from-orange-950/50 via-black to-black"></div>
-    <div class="absolute -top-30 left-1/2 -translate-x-1/2 w-175 h-175 rounded-full bg-orange-500/20 blur-3xl"></div>
-    <div class="absolute -bottom-37.5 -right-30 w-112.5 h-112.5 rounded-full bg-amber-400/10 blur-3xl"></div>
-
+    <div class="absolute -top-30 left-1/2 -translate-x-1/2 w-175 h-175 rounded-full bg-orange-500/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-37.5 -right-30 w-112.5 h-112.5 rounded-full bg-amber-400/10 blur-3xl pointer-events-none"></div>
+ 
     <div class="relative z-10 max-w-5xl text-center reveal reveal-up">
-      <img src="/logos/stuttgart-logo.svg" alt="Stuttgart Ingeniería Electrónica" class="mb-4 h-16 md:h-20 mx-auto" />
-
+      <Image
+        src={logo}
+        alt="Stuttgart Ingeniería Electrónica"
+        class="mb-6 h-16 md:h-20 w-auto mx-auto"
+      />
+ 
       <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-6">
         Soluciones técnicas para
         <span class="block bg-linear-to-r from-orange-300 via-orange-500 to-amber-300 bg-clip-text text-transparent">
           tableros, mediciones y seguridad eléctrica
         </span>
       </h1>
-
+ 
       <p class="max-w-3xl mx-auto text-zinc-300 text-lg md:text-xl mb-10 leading-8">
         Stuttgart es una empresa de ingeniería orientada a instalaciones de tableros,
         mediciones eléctricas, puesta a tierra, ensayos PAT y servicios técnicos
         vinculados a la ingeniería eléctrica y electrónica, con enfoque en calidad,
         seguridad y cumplimiento normativo.
       </p>
-
+ 
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href="#servicios"
-          class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105"
+          class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
         >
           Ver servicios
         </a>
         <a
           href="#contacto"
-          class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black"
+          class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
         >
           Solicitar contacto
         </a>
       </div>
     </div>
   </header>
-
-  <!-- About -->
+ 
+  <!-- ══ ABOUT ══════════════════════════════════════════════════════════════ -->
   <section
     id="about"
     class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 py-24"
   >
-    <div class="absolute -top-20 right-0 w-105 h-105 rounded-full bg-orange-500/10 blur-3xl"></div>
-
+    <div class="absolute -top-20 right-0 w-105 h-105 rounded-full bg-orange-500/10 blur-3xl pointer-events-none"></div>
+ 
     <div class="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
       <div class="reveal reveal-left">
         <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3">Nosotros</p>
         <h2 class="text-4xl md:text-5xl font-bold mb-6">
           Ingeniería técnica con foco en confiabilidad operativa
         </h2>
-
+ 
         <p class="text-zinc-400 leading-8 mb-5">
           En Stuttgart desarrollamos soluciones para instalaciones eléctricas,
           tableros de distribución y maniobra, mediciones técnicas y controles de
           seguridad, adaptándonos a requerimientos industriales, comerciales y de obra.
         </p>
-
+ 
         <p class="text-zinc-400 leading-8 mb-5">
           Nuestro trabajo combina criterio ingenieril, ejecución técnica y documentación
           clara, con el objetivo de entregar sistemas seguros, ordenados y preparados
           para operar con continuidad.
         </p>
-
+ 
         <p class="text-zinc-400 leading-8">
           Intervenimos en proyectos nuevos, adecuaciones, mantenimiento técnico y
           verificaciones, acompañando al cliente desde el relevamiento hasta la
           implementación y control final.
         </p>
       </div>
-
+ 
       <div class="reveal reveal-right rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-8 shadow-2xl">
         <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-4">
           Enfoque de trabajo
         </p>
-
         <h3 class="text-2xl md:text-3xl font-semibold mb-6">
           Soluciones técnicas con criterio, orden y seguridad
         </h3>
-
+ 
         <div class="space-y-5 text-zinc-400 leading-8">
           <div class="border-l-2 border-orange-400/50 pl-4">
             <p class="text-white font-medium mb-1">Instalaciones y tableros</p>
@@ -100,7 +111,6 @@ import Footer from "../components/Footer.astro";
               distribución, maniobra y protección.
             </p>
           </div>
-
           <div class="border-l-2 border-orange-400/50 pl-4">
             <p class="text-white font-medium mb-1">Mediciones y verificaciones</p>
             <p>
@@ -108,7 +118,6 @@ import Footer from "../components/Footer.astro";
               instalaciones y equipamiento.
             </p>
           </div>
-
           <div class="border-l-2 border-orange-400/50 pl-4">
             <p class="text-white font-medium mb-1">Diagnóstico y mantenimiento</p>
             <p>
@@ -120,14 +129,14 @@ import Footer from "../components/Footer.astro";
       </div>
     </div>
   </section>
-
-  <!-- Servicios -->
+ 
+  <!-- ══ SERVICIOS ══════════════════════════════════════════════════════════ -->
   <section
     id="servicios"
     class="relative overflow-hidden bg-linear-to-b from-black via-orange-950/10 to-black text-white px-6 py-24"
   >
-    <div class="absolute -left-25 top-10 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl"></div>
-
+    <div class="absolute -left-25 top-10 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+ 
     <div class="relative max-w-6xl mx-auto">
       <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3 reveal reveal-up">
         Servicios
@@ -135,66 +144,53 @@ import Footer from "../components/Footer.astro";
       <h2 class="text-4xl md:text-5xl font-bold mb-12 reveal reveal-up">
         Servicios técnicos especializados
       </h2>
-
-      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
-          <h3 class="text-2xl font-semibold mb-3">Instalación de tableros</h3>
-          <p class="text-zinc-400 leading-7">
-            Montaje, conexionado, adecuación y puesta en servicio de tableros eléctricos
-            de distribución, maniobra, protección y control.
-          </p>
-        </article>
-
-        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
-          <h3 class="text-2xl font-semibold mb-3">Mediciones eléctricas</h3>
-          <p class="text-zinc-400 leading-7">
-            Relevamientos técnicos, controles de parámetros eléctricos, verificación de
-            continuidad, tensión, corriente y estado general de instalaciones.
-          </p>
-        </article>
-
-        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
-          <h3 class="text-2xl font-semibold mb-3">Puesta a tierra y PAT</h3>
-          <p class="text-zinc-400 leading-7">
-            Ensayos de puesta a tierra, medición de resistencia, verificaciones PAT y
-            controles de seguridad sobre equipamiento e instalaciones.
-          </p>
-        </article>
-
-        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
-          <h3 class="text-2xl font-semibold mb-3">Mantenimiento técnico</h3>
-          <p class="text-zinc-400 leading-7">
-            Mantenimiento preventivo y correctivo de tableros, sistemas de protección,
-            conexiones y componentes eléctricos/electrónicos.
-          </p>
-        </article>
-
-        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
-          <h3 class="text-2xl font-semibold mb-3">Diagnóstico y adecuaciones</h3>
-          <p class="text-zinc-400 leading-7">
-            Detección de fallas, revisión de instalaciones existentes y propuestas de
-            mejora para elevar confiabilidad, seguridad y orden técnico.
-          </p>
-        </article>
-
-        <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
-          <h3 class="text-2xl font-semibold mb-3">Asistencia en ingeniería</h3>
-          <p class="text-zinc-400 leading-7">
-            Soporte técnico para proyectos, documentación, relevamientos en obra y
-            acompañamiento en tareas vinculadas a ingeniería eléctrica y electrónica.
-          </p>
-        </article>
+ 
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {[
+          {
+            titulo: "Instalación de tableros",
+            texto: "Montaje, conexionado, adecuación y puesta en servicio de tableros eléctricos de distribución, maniobra, protección y control.",
+          },
+          {
+            titulo: "Mediciones eléctricas",
+            texto: "Relevamientos técnicos, controles de parámetros eléctricos, verificación de continuidad, tensión, corriente y estado general de instalaciones.",
+          },
+          {
+            titulo: "Puesta a tierra y PAT",
+            texto: "Ensayos de puesta a tierra, medición de resistencia, verificaciones PAT y controles de seguridad sobre equipamiento e instalaciones.",
+          },
+          {
+            titulo: "Mantenimiento técnico",
+            texto: "Mantenimiento preventivo y correctivo de tableros, sistemas de protección, conexiones y componentes eléctricos/electrónicos.",
+          },
+          {
+            titulo: "Diagnóstico y adecuaciones",
+            texto: "Detección de fallas, revisión de instalaciones existentes y propuestas de mejora para elevar confiabilidad, seguridad y orden técnico.",
+          },
+          {
+            titulo: "Asistencia en ingeniería",
+            texto: "Soporte técnico para proyectos, documentación, relevamientos en obra y acompañamiento en tareas vinculadas a ingeniería eléctrica y electrónica.",
+          },
+        ].map((s) => (
+          <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
+            <div class="mb-4 w-10 h-10 rounded-xl bg-orange-400/10 border border-orange-400/20 flex items-center justify-center">
+              <span class="w-2.5 h-2.5 rounded-full bg-orange-400"></span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">{s.titulo}</h3>
+            <p class="text-zinc-400 leading-7 text-sm">{s.texto}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
-
-  <!-- Proyectos -->
+ 
+  <!-- ══ PROYECTOS ══════════════════════════════════════════════════════════ -->
   <section
     id="proyectos"
     class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 py-24"
   >
-    <div class="absolute -right-25 top-20 w-90 h-90 rounded-full bg-orange-500/10 blur-3xl"></div>
-
+    <div class="absolute -right-25 top-20 w-90 h-90 rounded-full bg-orange-500/10 blur-3xl pointer-events-none"></div>
+ 
     <div class="relative max-w-6xl mx-auto">
       <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3 reveal reveal-up">
         Proyectos
@@ -202,156 +198,167 @@ import Footer from "../components/Footer.astro";
       <h2 class="text-4xl md:text-5xl font-bold mb-12 reveal reveal-up">
         Experiencia técnica y casos de aplicación
       </h2>
-
-      <div class="grid md:grid-cols-2 gap-8">
+ 
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Proyecto 01 -->
         <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
-          <div class="aspect-16/10 w-full overflow-hidden bg-black">
-            <img
-              src="/proyectos/tableros/tablero-01.jpg"
+          <div class="aspect-16/10 w-full overflow-hidden bg-zinc-950">
+            <Image
+              src={tablero01}
               alt="Instalación de tablero eléctrico"
               class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               loading="lazy"
             />
           </div>
-
           <div class="p-6">
-            <h3 class="text-2xl font-semibold mb-3 group-hover:text-orange-400 transition">
+            <p class="text-orange-400 text-[11px] uppercase tracking-[0.2em] mb-2">Tableros eléctricos</p>
+            <h3 class="text-xl font-semibold mb-3 group-hover:text-orange-400 transition">
               Proyecto 01 · Tableros eléctricos
             </h3>
-            <p class="text-zinc-400 leading-7">
+            <p class="text-zinc-400 leading-7 text-sm">
               Desarrollo e instalación de tableros con criterio de orden, protección,
               maniobra y mantenimiento, adaptados a requerimientos operativos del cliente.
             </p>
           </div>
         </article>
-
+ 
+        <!-- Proyecto 02 -->
         <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
-          <div class="aspect-16/10 w-full overflow-hidden bg-black">
-            <img
-              src="/proyectos/mediciones/medicion-01.jpg"
+          <div class="aspect-16/10 w-full overflow-hidden bg-zinc-950">
+            <Image
+              src={medicion01}
               alt="Medición eléctrica en campo"
               class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               loading="lazy"
             />
           </div>
-
           <div class="p-6">
-            <h3 class="text-2xl font-semibold mb-3 group-hover:text-orange-400 transition">
+            <p class="text-orange-400 text-[11px] uppercase tracking-[0.2em] mb-2">Mediciones y verificación</p>
+            <h3 class="text-xl font-semibold mb-3 group-hover:text-orange-400 transition">
               Proyecto 02 · Mediciones y verificación
             </h3>
-            <p class="text-zinc-400 leading-7">
+            <p class="text-zinc-400 leading-7 text-sm">
               Controles técnicos sobre instalaciones y equipos para validar estado,
               funcionamiento y condiciones generales de seguridad eléctrica.
             </p>
           </div>
         </article>
-
+ 
+        <!-- Proyecto 03 -->
         <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
-          <div class="aspect-16/10 w-full overflow-hidden bg-black">
-            <img
-              src="/proyectos/mediciones/medicion-02.jpg"
+          <div class="aspect-16/10 w-full overflow-hidden bg-zinc-950">
+            <Image
+              src={medicion02}
               alt="Verificación técnica de instalación"
               class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               loading="lazy"
             />
           </div>
-
           <div class="p-6">
-            <h3 class="text-2xl font-semibold mb-3 group-hover:text-orange-400 transition">
+            <p class="text-orange-400 text-[11px] uppercase tracking-[0.2em] mb-2">Verificación técnica</p>
+            <h3 class="text-xl font-semibold mb-3 group-hover:text-orange-400 transition">
               Proyecto 03 · Verificación técnica
             </h3>
-            <p class="text-zinc-400 leading-7">
+            <p class="text-zinc-400 leading-7 text-sm">
               Relevamiento, control y documentación técnica para validar condiciones
               operativas y de seguridad en instalaciones existentes.
             </p>
           </div>
         </article>
-
+ 
+        <!-- Proyecto 04 -->
         <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
-          <div class="aspect-16/10 w-full overflow-hidden bg-black">
-            <img
-              src="/proyectos/mantenimiento/mantenimiento-01.jpg"
-              alt="Mantenimiento técnico de tablero"
+          <div class="aspect-16/10 w-full overflow-hidden bg-zinc-950">
+            <Image
+              src={p4_7}
+              alt="Instalación eléctrica Proyecto 4"
               class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               loading="lazy"
             />
           </div>
-
           <div class="p-6">
-            <h3 class="text-2xl font-semibold mb-3 group-hover:text-orange-400 transition">
-              Proyecto 04 · Adecuaciones y mantenimiento
+            <p class="text-orange-400 text-[11px] uppercase tracking-[0.2em] mb-2">Instalaciones eléctricas</p>
+            <h3 class="text-xl font-semibold mb-3 group-hover:text-orange-400 transition">
+              Proyecto 04 · Instalaciones eléctricas
             </h3>
-            <p class="text-zinc-400 leading-7">
-              Intervenciones orientadas a corregir desvíos, actualizar instalaciones y
-              mejorar desempeño y confiabilidad operativa.
+            <p class="text-zinc-400 leading-7 text-sm">
+              Intervención integral de luminaria en edificio comercial, incluyendo
+              montaje, conexionado y puesta en servicio de tableros de distribución y maniobra.
             </p>
           </div>
         </article>
       </div>
+ 
+      <div class="mt-10 text-center reveal reveal-up">
+        <a
+          href="/galeria"
+          class="inline-flex items-center gap-2 rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+        >
+          Ver galería completa
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
   </section>
-
-  <!-- Contacto -->
+ 
+  <!-- ══ CONTACTO ═══════════════════════════════════════════════════════════ -->
   <section
     id="contacto"
     class="relative overflow-hidden bg-linear-to-b from-black via-orange-950/10 to-black text-white px-6 py-24"
   >
-    <div class="absolute left-0 bottom-0 w-85 h-85 rounded-full bg-orange-500/10 blur-3xl"></div>
-
+    <div class="absolute left-0 bottom-0 w-85 h-85 rounded-full bg-orange-500/10 blur-3xl pointer-events-none"></div>
+ 
     <div class="relative max-w-6xl mx-auto rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-10 md:p-14 reveal reveal-up">
       <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3">Contacto</p>
       <h2 class="text-4xl md:text-5xl font-bold mb-6">
         Hablemos de tu próximo requerimiento técnico
       </h2>
-
+ 
       <p class="max-w-2xl text-zinc-400 leading-8 mb-8">
         Si necesitás instalaciones de tableros, mediciones, controles PAT, puesta a
         tierra o asistencia técnica en ingeniería eléctrica/electrónica, podemos ayudarte.
       </p>
-
+ 
       <div class="flex flex-wrap gap-4">
         <a
           href="https://wa.me/5491123921232"
-          class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105"
+          class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
           target="_blank"
           rel="noopener noreferrer"
         >
           WhatsApp
         </a>
-
         <a
           href="https://www.instagram.com/stuttingenieria/"
-          class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black"
+          class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
           target="_blank"
           rel="noopener noreferrer"
         >
           Instagram
         </a>
-
         <a
           href="mailto:presupuestos@stuttingenieria.com"
-          class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black"
+          class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
         >
           Email
         </a>
-
         <a
           href="/unite"
-          class="rounded-xl border border-orange-400/40 px-6 py-3 font-medium text-white transition hover:border-orange-400/80 hover:bg-orange-400/10"
+          class="rounded-xl border border-orange-400/40 px-6 py-3 font-medium text-white transition hover:border-orange-400/80 hover:bg-orange-400/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
         >
           Únete al equipo
         </a>
       </div>
     </div>
   </section>
-
-  <!-- FAQ -->
+ 
+  <!-- ══ FAQ ════════════════════════════════════════════════════════════════ -->
   <section
     id="faq"
     class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 pb-24"
   >
-    <div class="absolute right-0 top-0 w-75 h-75 rounded-full bg-amber-500/10 blur-3xl"></div>
-
+    <div class="absolute right-0 top-0 w-75 h-75 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+ 
     <div class="relative max-w-6xl mx-auto">
       <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3 reveal reveal-up">
         Preguntas frecuentes
@@ -359,209 +366,132 @@ import Footer from "../components/Footer.astro";
       <h2 class="text-4xl md:text-5xl font-bold mb-10 reveal reveal-up">
         Respuestas rápidas
       </h2>
-
+ 
       <div class="space-y-4">
-        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
-          <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
-            ¿Qué tipo de servicios realiza Stuttgart?
-            <span class="text-orange-400 transition group-open:rotate-45">+</span>
-          </summary>
-          <p class="mt-4 text-zinc-400 leading-7">
-            Trabajamos en instalaciones de tableros, mediciones eléctricas, puesta a
-            tierra, ensayos PAT, mantenimiento técnico y tareas vinculadas a la
-            ingeniería eléctrica y electrónica.
-          </p>
-        </details>
-
-        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
-          <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
-            ¿Realizan mediciones y verificaciones técnicas?
-            <span class="text-orange-400 transition group-open:rotate-45">+</span>
-          </summary>
-          <p class="mt-4 text-zinc-400 leading-7">
-            Sí. Realizamos mediciones eléctricas, controles de puesta a tierra,
-            verificaciones PAT y evaluaciones técnicas sobre instalaciones y equipos.
-          </p>
-        </details>
-
-        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
-          <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
-            ¿Pueden intervenir en instalaciones existentes?
-            <span class="text-orange-400 transition group-open:rotate-45">+</span>
-          </summary>
-          <p class="mt-4 text-zinc-400 leading-7">
-            Sí. Podemos relevar instalaciones existentes, detectar desvíos, proponer
-            adecuaciones y ejecutar mejoras o mantenimiento según la necesidad del sitio.
-          </p>
-        </details>
-
-        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
-          <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
-            ¿Trabajan tanto en obra nueva como en mantenimiento?
-            <span class="text-orange-400 transition group-open:rotate-45">+</span>
-          </summary>
-          <p class="mt-4 text-zinc-400 leading-7">
-            Sí. Participamos tanto en proyectos nuevos como en tareas de mantenimiento,
-            adecuación, revisión y soporte técnico sobre instalaciones ya operativas.
-          </p>
-        </details>
-
-        <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
-          <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
-            ¿Cómo puedo solicitar una consulta técnica?
-            <span class="text-orange-400 transition group-open:rotate-45">+</span>
-          </summary>
-          <p class="mt-4 text-zinc-400 leading-7">
-            Podés contactarnos por WhatsApp o correo electrónico para coordinar
-            un primer relevamiento o consulta según tu necesidad.
-          </p>
-        </details>
+        {[
+          {
+            q: "¿Qué tipo de servicios realiza Stuttgart?",
+            a: "Trabajamos en instalaciones de tableros, mediciones eléctricas, puesta a tierra, ensayos PAT, mantenimiento técnico y tareas vinculadas a la ingeniería eléctrica y electrónica.",
+          },
+          {
+            q: "¿Realizan mediciones y verificaciones técnicas?",
+            a: "Sí. Realizamos mediciones eléctricas, controles de puesta a tierra, verificaciones PAT y evaluaciones técnicas sobre instalaciones y equipos.",
+          },
+          {
+            q: "¿Pueden intervenir en instalaciones existentes?",
+            a: "Sí. Podemos relevar instalaciones existentes, detectar desvíos, proponer adecuaciones y ejecutar mejoras o mantenimiento según la necesidad del sitio.",
+          },
+          {
+            q: "¿Trabajan tanto en obra nueva como en mantenimiento?",
+            a: "Sí. Participamos tanto en proyectos nuevos como en tareas de mantenimiento, adecuación, revisión y soporte técnico sobre instalaciones ya operativas.",
+          },
+          {
+            q: "¿Cómo puedo solicitar una consulta técnica?",
+            a: "Podés contactarnos por WhatsApp o correo electrónico para coordinar un primer relevamiento o consulta según tu necesidad.",
+          },
+        ].map((item) => (
+          <details class="reveal reveal-up group rounded-2xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40">
+            <summary class="cursor-pointer list-none flex items-center justify-between text-lg font-semibold">
+              {item.q}
+              <span class="ml-4 shrink-0 text-orange-400 transition group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-zinc-400 leading-7">{item.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
-
+ 
   <Footer />
 </Layout>
-
+ 
 <script>
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         }
       });
     },
-    {
-      threshold: 0.15,
-    }
+    { threshold: 0.12 }
   );
-
-  const elements = document.querySelectorAll(".reveal");
-  elements.forEach((el) => observer.observe(el));
+ 
+  document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 </script>
-
+ 
 <style>
+  /* ── REVEAL ── */
   .reveal {
     opacity: 0;
-    transition:
-      opacity 0.8s ease,
-      transform 0.8s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
     will-change: opacity, transform;
   }
-
-  .reveal-up {
-    transform: translateY(36px);
-  }
-
-  .reveal-left {
-    transform: translateX(-36px);
-  }
-
-  /* Animación FAQ details */
+  .reveal-up    { transform: translateY(36px); }
+  .reveal-left  { transform: translateX(-36px); }
+  .reveal-right { transform: translateX(36px); }
+  .reveal.is-visible { opacity: 1; transform: translate(0, 0); }
+ 
+  /* ── FAQ ── */
   details {
-    border-radius: 0.75rem;
     overflow: hidden;
     transition: box-shadow 0.25s ease, border-color 0.25s ease;
   }
-
   details[open] {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-    border-color: rgba(251, 146, 60, 0.45);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+    border-color: rgba(251,146,60,0.45);
   }
-
-  details > summary {
-    list-style: none;
-    outline: none;
-  }
-
-  details > summary::-webkit-details-marker {
-    display: none;
-  }
-
+  details > summary { list-style: none; outline: none; }
+  details > summary::-webkit-details-marker { display: none; }
+ 
   details p {
     max-height: 0;
     opacity: 0;
     transform: translateY(-8px);
     margin: 0;
-    transition:
-      max-height 0.35s ease,
-      opacity 0.25s ease,
-      transform 0.25s ease;
+    transition: max-height 0.35s ease, opacity 0.25s ease, transform 0.25s ease;
   }
-
   details[open] p {
     max-height: 300px;
     opacity: 1;
     transform: translateY(0);
   }
-
-  .reveal-right {
-    transform: translateX(36px);
-  }
-
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-
+ 
+  /* ── MOBILE ── */
   @media (max-width: 768px) {
     header#inicio {
       min-height: 72vh;
-      padding-top: 16rem;
+      padding-top: 7rem;
       padding-bottom: 2.5rem;
     }
-
     header#inicio h1 {
       font-size: 2.1rem;
       line-height: 1.2;
     }
-
     header#inicio p {
       font-size: 0.95rem;
       line-height: 1.7;
     }
-
-    .max-w-6xl {
-      max-width: 100% !important;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
-    }
-
-    .space-y-4 > details {
-      margin-bottom: 0.75rem;
-    }
-
     .reveal {
       opacity: 0;
       transform: translateY(18px);
     }
-
     .reveal.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .rounded-3xl,
-    .rounded-2xl {
-      border-radius: 1rem;
-    }
-
-    .px-6, .px-8 {
-      padding-left: 1rem !important;
-      padding-right: 1rem !important;
-    }
-
+    .rounded-2xl { border-radius: 1rem; }
     .py-24 {
-      padding-top: 2rem !important;
-      padding-bottom: 2rem !important;
-    }
-
-    .grid.md\:grid-cols-2,
-    .grid.md\:grid-cols-3,
-    .grid.md\:grid-cols-4 {
-      grid-template-columns: 1fr !important;
+      padding-top: 3.5rem !important;
+      padding-bottom: 3.5rem !important;
     }
   }
-
+ 
+  /* ── REDUCIR MOVIMIENTO ── */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: opacity 0.4s ease; transform: none !important; }
+    details p { transition: opacity 0.2s ease; }
+  }
 </style>

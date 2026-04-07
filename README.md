@@ -1,46 +1,55 @@
-# Astro Starter Kit: Basics
+# Stuttgart — Sitio web institucional
 
-```sh
-npm create astro@latest -- --template basics
-```
+Sitio web desarrollado con **Astro**, **TypeScript** y **Tailwind CSS** para presentar los servicios, trabajos y proyectos de Stuttgart.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## Stack tecnológico
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Astro** → render estático y alto rendimiento
+- **TypeScript** → tipado y mantenibilidad
+- **Tailwind CSS** → sistema de diseño
+- **JavaScript (vanilla)** → interacciones (filtros, lightbox, carrusel)
+
+---
+
+## Objetivo del proyecto
+
+Este sitio está diseñado para:
+
+- mostrar servicios eléctricos y técnicos
+- presentar trabajos ejecutados de forma visual
+- mantener una estructura clara y escalable
+- priorizar performance y estética profesional
+
+---
+
+## Estructura del proyecto
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+├── src/
+│   ├── assets/
+│   │   └── gallery/
+│   │       ├── mantenimiento/
+│   │       ├── mediciones/
+│   │       ├── stuttgart_proyecto_4/
+│   │       └── tableros/
+│   ├── components/
+│   │   ├── Footer.astro
+│   │   └── Navbar.astro
+│   ├── data/
+│   │   └── gallery.ts
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── pages/
+│   │   ├── galeria.astro
+│   │   ├── index.astro
+│   │   ├── terminos.astro
+│   │   └── unite.astro
+│   ├── styles/
+│   └── types/
+│       └── gallery.ts
+├── package.json
+└── README.md

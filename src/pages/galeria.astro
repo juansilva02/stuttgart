@@ -1,786 +1,822 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-
-const filtros = [
-  { key: "all", label: "Todos" },
-  { key: "tableros", label: "Tableros" },
-  { key: "mediciones", label: "Mediciones" },
-  { key: "mantenimiento", label: "Mantenimiento" },
-] as const;
-
-const categoriaLabel: Record<string, string> = {
-  tableros: "Tableros",
-  mediciones: "Mediciones",
-  mantenimiento: "Mantenimiento",
-};
-
-const imagenes = [
-  {
-    categoria: "tableros",
-    titulo: "Tablero principal",
-    descripcion: "Montaje, adecuación y presentación técnica en campo.",
-    src: "/proyectos/tableros/tablero-01.jpg",
-    featured: true,
-    position: "object-center",
-  },
-  {
-    categoria: "tableros",
-    titulo: "Tablero de distribución",
-    descripcion: "Conexionado, orden interno y criterio de mantenimiento.",
-    src: "/proyectos/tableros/tablero-02.jpg",
-    position: "object-center",
-  },
-  {
-    categoria: "tableros",
-    titulo: "Tablero de maniobra",
-    descripcion: "Intervención técnica y verificación de componentes.",
-    src: "/proyectos/tableros/tablero-03.jpg",
-    position: "object-center",
-  },
-  {
-    categoria: "tableros",
-    titulo: "Detalle de tablero",
-    descripcion: "Ejecución y terminación sobre instalación existente.",
-    src: "/proyectos/tableros/tablero-04.jpg",
-    position: "object-center",
-  },
-  {
-    categoria: "tableros",
-    titulo: "Instalación terminada",
-    descripcion: "Protección, accesibilidad y orden visual del conjunto.",
-    src: "/proyectos/tableros/tablero-05.jpg",
-    position: "object-center",
-  },
-  {
-    categoria: "tableros",
-    titulo: "Configuración técnica",
-    descripcion: "Ajuste final y revisión operativa del tablero.",
-    src: "/proyectos/tableros/tablero-06.jpg",
-    position: "object-center",
-  },
-
-  {
-    categoria: "mediciones",
-    titulo: "Medición eléctrica en campo",
-    descripcion: "Control instrumental y validación de parámetros operativos.",
-    src: "/proyectos/mediciones/medicion-01.jpg",
-    featured: true,
-    position: "object-center",
-  },
-  {
-    categoria: "mediciones",
-    titulo: "Verificación de parámetros",
-    descripcion: "Lectura técnica para diagnóstico y control de instalación.",
-    src: "/proyectos/mediciones/medicion-02.jpg",
-    position: "object-center",
-  },
-  {
-    categoria: "mediciones",
-    titulo: "Relevamiento técnico",
-    descripcion: "Inspección en sitio y chequeo de condiciones reales.",
-    src: "/proyectos/mediciones/medicion-03.jpg",
-    position: "object-center",
-  },
-  {
-    categoria: "mediciones",
-    titulo: "Control instrumental",
-    descripcion: "Registro de medición sobre equipamiento instalado.",
-    src: "/proyectos/mediciones/medicion-04.jpg",
-    position: "object-center",
-  },
-  {
-    categoria: "mediciones",
-    titulo: "Verificación eléctrica",
-    descripcion: "Evaluación de funcionamiento y seguridad eléctrica.",
-    src: "/proyectos/mediciones/medicion-05.jpg",
-    position: "object-center",
-  },
-
-  {
-    categoria: "mantenimiento",
-    titulo: "Mantenimiento técnico",
-    descripcion: "Intervención correctiva y revisión integral en campo.",
-    src: "/proyectos/mantenimiento/mantenimiento-01.jpg",
-    featured: true,
-    position: "object-center",
-  },
-  {
-    categoria: "mantenimiento",
-    titulo: "Adecuación en obra",
-    descripcion: "Mejora de instalación con criterio técnico y operativo.",
-    src: "/proyectos/mantenimiento/mantenimiento-02.jpg",
-    position: "object-center",
-  },
-  {
-    categoria: "mantenimiento",
-    titulo: "Revisión de instalación",
-    descripcion: "Diagnóstico, ajuste y control de estado general.",
-    src: "/proyectos/mantenimiento/mantenimiento-03.jpg",
-    position: "object-center",
-  },
-  {
-    categoria: "mantenimiento",
-    titulo: "Intervención operativa",
-    descripcion: "Mantenimiento aplicado sobre instalación en servicio.",
-    src: "/proyectos/mantenimiento/mantenimiento-04.jpg",
-    position: "object-center",
-  },
-];
+import {
+  filtrosGaleria,
+  categoriaLabel,
+  imagenesGaleria,
+  proyecto4Carrusel,
+} from "../data/gallery";
 ---
-
+ 
 <Layout title="Galería técnica | Stuttgart">
   <Navbar currentPage="galeria" />
-
-  <!-- Header -->
-  <section class="relative overflow-hidden bg-black text-white px-6 pt-32 pb-16 md:pb-20">
-    <div class="absolute inset-0 bg-linear-to-b from-orange-950/45 via-black to-black"></div>
-    <div class="absolute -top-30 left-1/2 -translate-x-1/2 w-170 h-170 rounded-full bg-orange-500/10 blur-3xl"></div>
-
-    <div class="relative max-w-5xl mx-auto text-center reveal reveal-up">
-      <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
-        Galería técnica
-      </p>
-
-      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-        Trabajos ejecutados
-      </h1>
-
-      <p class="max-w-3xl mx-auto text-zinc-400 leading-8 text-lg">
-        Registro visual de instalaciones, mediciones y mantenimiento técnico
-        realizados en campo.
-      </p>
+ 
+  <div class="relative overflow-hidden bg-black">
+    <!-- FONDO DINÁMICO -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="bg-grid-pattern"></div>
     </div>
-  </section>
-
-  <!-- Filtros -->
-  <section class="bg-black text-white px-6 pb-10">
-    <div class="max-w-6xl mx-auto flex gap-3 flex-wrap justify-center reveal reveal-up">
-      {filtros.map((filtro) => (
-        <button
-          class:list={["gallery-filter", filtro.key === "all" && "is-active"]}
-          type="button"
-          data-filter={filtro.key}
-        >
-          {filtro.label}
-        </button>
-      ))}
-    </div>
-  </section>
-
-  <!-- Grid -->
-  <section class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 pb-24">
-    <div class="absolute -right-30 top-20 w-85 h-85 rounded-full bg-orange-500/10 blur-3xl"></div>
-
-    <div
-      id="gallery-grid"
-      class="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 items-start xl:grid-flow-row-dense"
-    >
-      {imagenes.map((item) => (
-        <article
-          class:list={[
-            "gallery-item self-start group relative overflow-hidden rounded-[22px] border border-white/10 bg-zinc-950",
-            item.featured && "md:col-span-2",
-          ]}
-          data-category={item.categoria}
-          data-title={item.titulo}
-          data-caption={item.descripcion}
-          data-src={item.src}
-        >
-          <button
-            type="button"
-            class="image-trigger block w-full text-left"
-            aria-label={`Abrir imagen: ${item.titulo}`}
+ 
+    <div class="relative z-10">
+      <!-- Header -->
+      <section class="relative overflow-hidden text-white px-6 pt-32 pb-16 md:pb-20">
+        <div class="absolute inset-0 bg-linear-to-b from-orange-950/35 via-transparent to-transparent pointer-events-none"></div>
+ 
+        <div class="relative max-w-5xl mx-auto text-center page-fade-in">
+          <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
+            Galería técnica
+          </p>
+          <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+            Trabajos ejecutados
+          </h1>
+          <p class="max-w-3xl mx-auto text-zinc-400 leading-8 text-lg">
+            Registro visual de instalaciones, mediciones y mantenimiento técnico
+            realizados en campo.
+          </p>
+        </div>
+      </section>
+ 
+      <!-- Carrusel Proyecto 4 -->
+      <section class="text-white px-6 pb-24">
+        <div class="max-w-6xl mx-auto">
+          <div class="mb-8 page-fade-in page-fade-in-delay-1">
+            <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
+              Proyecto destacado
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+              Stuttgart Proyecto 4
+            </h2>
+            <p class="max-w-2xl text-zinc-400 leading-8">
+              Recorrido visual del proyecto con una navegación propia e independiente del resto de la galería.
+            </p>
+          </div>
+ 
+          <div
+            class="relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.03] backdrop-blur-sm page-fade-in page-fade-in-delay-2 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+            id="proyecto4-root"
           >
-            <div
-              class:list={[
-                "relative overflow-hidden bg-zinc-950",
-                item.featured ? "aspect-16/10" : "aspect-4/3",
-              ]}
-            >
-              <img
-                src={item.src}
-                alt={item.titulo}
-                class:list={[
-                  "gallery-image absolute inset-0 h-full w-full object-cover",
-                  item.position ?? "object-center",
-                ]}
-                loading="lazy"
-              />
-
-              <div class="absolute inset-0 bg-linear-to-t from-black/95 via-black/28 to-black/5"></div>
-              <div class="absolute inset-0 ring-1 ring-inset ring-white/8"></div>
-
-              <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                <p class="text-orange-400 text-[11px] uppercase tracking-[0.22em] mb-2">
-                  {categoriaLabel[item.categoria]}
-                </p>
-                <h2 class="text-white text-xl md:text-2xl font-semibold leading-tight">
-                  {item.titulo}
-                </h2>
-                <p class="text-zinc-300/80 text-[13px] md:text-sm mt-2 leading-6 max-w-2xl">
-                  {item.descripcion}
-                </p>
-              </div>
+            <!-- Contador -->
+            <div class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 text-white text-xs tabular-nums" aria-live="polite">
+              <span id="proyecto4-counter">1</span> / {proyecto4Carrusel.length}
             </div>
-          </button>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <!-- CTA final -->
-  <section class="bg-black text-white px-6 pb-24">
-    <div class="max-w-6xl mx-auto rounded-[22px] border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-8 md:p-10 reveal reveal-up">
-      <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
-        Contacto técnico
-      </p>
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        ¿Necesitás una intervención técnica?
-      </h2>
-      <p class="max-w-2xl text-zinc-400 leading-8 mb-8">
-        Podemos relevar, instalar, medir y documentar tu proyecto con criterio
-        técnico y foco en seguridad operativa.
-      </p>
-
-      <div class="flex flex-wrap gap-4">
-        <a
-          href="/#contacto"
-          class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105"
+ 
+            <div
+              id="proyecto4-track"
+              class="flex transition-transform duration-500 ease-out"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              {proyecto4Carrusel.map((item, index) => (
+                <div class="min-w-full relative aspect-[16/9]" aria-hidden={index !== 0 ? "true" : "false"}>
+                  <Image
+                    src={item.src}
+                    alt={item.titulo}
+                    class:list={[
+                      "absolute inset-0 h-full w-full object-cover",
+                      item.position ?? "object-center",
+                    ]}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchpriority={index === 0 ? "high" : "auto"}
+                    widths={[800, 1200, 1600]}
+                    sizes="100vw"
+                  />
+                  <div class="absolute inset-0 bg-linear-to-t from-black/85 via-black/15 to-transparent pointer-events-none"></div>
+                  <div class="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                    <p class="text-orange-400 text-[11px] uppercase tracking-[0.22em] mb-2">
+                      Proyecto 4
+                    </p>
+                    <h3 class="text-white text-2xl md:text-3xl font-semibold">
+                      {item.titulo}
+                    </h3>
+                    <p class="text-zinc-300/85 text-sm md:text-base mt-2 max-w-2xl">
+                      {item.descripcion}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+ 
+            <button
+              id="proyecto4-prev"
+              type="button"
+              aria-label="Imagen anterior"
+              class="absolute left-4 top-1/2 -translate-y-1/2 z-10 h-11 w-11 rounded-full border border-white/15 bg-black/40 text-white backdrop-blur-md transition hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+            >
+              ‹
+            </button>
+ 
+            <button
+              id="proyecto4-next"
+              type="button"
+              aria-label="Imagen siguiente"
+              class="absolute right-4 top-1/2 -translate-y-1/2 z-10 h-11 w-11 rounded-full border border-white/15 bg-black/40 text-white backdrop-blur-md transition hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+            >
+              ›
+            </button>
+ 
+            <div
+              id="proyecto4-dots"
+              class="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2"
+              role="tablist"
+              aria-label="Imágenes del carrusel"
+            >
+              {proyecto4Carrusel.map((item, index) => (
+                <button
+                  type="button"
+                  role="tab"
+                  class:list={[
+                    "proyecto4-dot h-2.5 w-2.5 rounded-full transition",
+                    index === 0 ? "bg-white" : "bg-white/35",
+                  ]}
+                  data-index={index}
+                  aria-label={`Ir a: ${item.titulo}`}
+                  aria-selected={index === 0 ? "true" : "false"}
+                ></button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+ 
+      <!-- Filtros -->
+      <section class="text-white px-6 pb-10" aria-label="Filtros de galería">
+        <div class="max-w-6xl mx-auto flex gap-3 flex-wrap justify-center page-fade-in page-fade-in-delay-1" role="group" aria-label="Categorías">
+          {filtrosGaleria.map((filtro) => (
+            <button
+              class:list={["gallery-filter", filtro.key === "all" && "is-active"]}
+              type="button"
+              data-filter={filtro.key}
+              aria-pressed={filtro.key === "all" ? "true" : "false"}
+            >
+              {filtro.label}
+            </button>
+          ))}
+        </div>
+      </section>
+ 
+      <!-- Grid -->
+      <section class="relative text-white px-6 pb-24" aria-label="Galería de imágenes">
+        <div class="absolute -right-30 top-20 w-85 h-85 rounded-full pointer-events-none z-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.12)_0%,transparent_70%)]"></div>
+ 
+        <div
+          id="gallery-grid"
+          class="relative z-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 items-start xl:grid-flow-row-dense"
+          role="list"
         >
-          Solicitar contacto
-        </a>
-        <a
-          href="/#servicios"
-          class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black"
+          {imagenesGaleria.map((item) => (
+            <article
+              class:list={[
+                "gallery-item self-start group relative overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.03] backdrop-blur-sm page-fade-in page-fade-in-delay-2 shadow-[0_12px_40px_rgba(0,0,0,0.28)]",
+                item.featured && "md:col-span-2",
+              ]}
+              data-category={item.categoria}
+              data-category-label={categoriaLabel[item.categoria]}
+              data-title={item.titulo}
+              data-caption={item.descripcion}
+              data-src={item.src.src}
+              role="listitem"
+            >
+              <button
+                type="button"
+                class="image-trigger block w-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400 focus-visible:outline-offset-2 rounded-[22px]"
+                aria-label={`Ver imagen: ${item.titulo}`}
+              >
+                <div
+                  class:list={[
+                    "relative overflow-hidden bg-zinc-950",
+                    item.featured ? "aspect-16/10" : "aspect-4/3",
+                  ]}
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.titulo}
+                    class:list={[
+                      "gallery-image absolute inset-0 h-full w-full object-cover",
+                      item.position ?? "object-center",
+                    ]}
+                    loading="lazy"
+                    widths={[600, 900, 1200]}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  />
+                  <div class="absolute inset-0 bg-linear-to-t from-black/95 via-black/28 to-black/5 pointer-events-none"></div>
+                  <div class="absolute inset-0 ring-1 ring-inset ring-white/8 pointer-events-none"></div>
+ 
+                  <div class="absolute inset-x-0 bottom-0 p-5 md:p-6 pointer-events-none">
+                    <p class="text-orange-400 text-[11px] uppercase tracking-[0.22em] mb-2">
+                      {categoriaLabel[item.categoria]}
+                    </p>
+                    <h2 class="text-white text-xl md:text-2xl font-semibold leading-tight">
+                      {item.titulo}
+                    </h2>
+                    <p class="text-zinc-300/80 text-[13px] md:text-sm mt-2 leading-6 max-w-2xl">
+                      {item.descripcion}
+                    </p>
+                  </div>
+                </div>
+              </button>
+            </article>
+          ))}
+        </div>
+ 
+        <!-- Mensaje cuando no hay resultados -->
+        <p
+          id="no-results"
+          class="hidden text-center text-zinc-500 mt-16 text-base"
+          aria-live="polite"
         >
-          Ver servicios
-        </a>
+          No hay imágenes en esta categoría.
+        </p>
+      </section>
+ 
+      <!-- CTA final -->
+      <section class="text-white px-6 pb-24 relative z-10">
+        <div class="max-w-6xl mx-auto rounded-[22px] border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 md:p-10 reveal shadow-[0_20px_80px_rgba(0,0,0,0.35)]">
+          <p class="text-orange-400 text-sm uppercase tracking-[0.22em] mb-3">
+            Contacto técnico
+          </p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            ¿Necesitás una intervención técnica?
+          </h2>
+          <p class="max-w-2xl text-zinc-400 leading-8 mb-8">
+            Podemos relevar, instalar, medir y documentar tu proyecto con criterio
+            técnico y foco en seguridad operativa.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="/#contacto"
+              class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+            >
+              Solicitar contacto
+            </a>
+            <a
+              href="/#servicios"
+              class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+            >
+              Ver servicios
+            </a>
+          </div>
+        </div>
+      </section>
+ 
+      <!-- Lightbox -->
+      <div
+        id="lightbox"
+        class="lightbox hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Visor de imagen"
+        aria-hidden="true"
+      >
+        <div class="lightbox-backdrop"></div>
+ 
+        <button
+          id="lightbox-close"
+          class="lightbox-close"
+          aria-label="Cerrar visor"
+        >
+          ✕
+        </button>
+ 
+        <button
+          id="lightbox-prev"
+          class="lightbox-nav lightbox-prev"
+          aria-label="Imagen anterior"
+        >
+          ‹
+        </button>
+ 
+        <div class="lightbox-shell">
+          <div class="lightbox-img-wrap">
+            <img id="lightbox-image" src="" alt="" class="lightbox-image" />
+          </div>
+          <div class="lightbox-meta">
+            <p id="lightbox-category" class="lightbox-category"></p>
+            <h3 id="lightbox-title" class="lightbox-title"></h3>
+            <p id="lightbox-caption" class="lightbox-caption"></p>
+          </div>
+        </div>
+ 
+        <button
+          id="lightbox-next"
+          class="lightbox-nav lightbox-next"
+          aria-label="Imagen siguiente"
+        >
+          ›
+        </button>
       </div>
     </div>
-  </section>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
-    <div class="lightbox-backdrop"></div>
-
-    <button id="lightbox-close" class="lightbox-close" aria-label="Cerrar imagen">
-      ✕
-    </button>
-
-    <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="Imagen anterior">
-      ‹
-    </button>
-
-    <div class="lightbox-shell">
-      <img id="lightbox-image" src="" alt="" class="lightbox-image" />
-      <div class="lightbox-meta">
-        <p id="lightbox-category" class="lightbox-category"></p>
-        <h3 id="lightbox-title" class="lightbox-title"></h3>
-        <p id="lightbox-caption" class="lightbox-caption"></p>
-      </div>
-    </div>
-
-    <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="Imagen siguiente">
-      ›
-    </button>
   </div>
-
+ 
   <Footer />
 </Layout>
-
+ 
 <script>
   window.addEventListener("DOMContentLoaded", () => {
-    const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".gallery-filter"));
-    const galleryItems = Array.from(document.querySelectorAll<HTMLElement>(".gallery-item"));
-
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightbox-image");
+    // ─── ELEMENTOS ────────────────────────────────────────────────
+    const filterButtons  = Array.from(document.querySelectorAll<HTMLButtonElement>(".gallery-filter"));
+    const galleryItems   = Array.from(document.querySelectorAll<HTMLElement>(".gallery-item"));
+    const noResults      = document.getElementById("no-results");
+ 
+    const lightbox         = document.getElementById("lightbox");
+    const lightboxImage    = document.getElementById("lightbox-image") as HTMLImageElement | null;
     const lightboxCategory = document.getElementById("lightbox-category");
-    const lightboxTitle = document.getElementById("lightbox-title");
-    const lightboxCaption = document.getElementById("lightbox-caption");
-    const lightboxClose = document.getElementById("lightbox-close");
-    const lightboxPrev = document.getElementById("lightbox-prev");
-    const lightboxNext = document.getElementById("lightbox-next");
-
+    const lightboxTitle    = document.getElementById("lightbox-title");
+    const lightboxCaption  = document.getElementById("lightbox-caption");
+    const lightboxClose    = document.getElementById("lightbox-close");
+    const lightboxPrev     = document.getElementById("lightbox-prev");
+    const lightboxNext     = document.getElementById("lightbox-next");
+ 
+    const proyecto4Root    = document.getElementById("proyecto4-root");
+    const proyecto4Track   = document.getElementById("proyecto4-track");
+    const proyecto4Prev    = document.getElementById("proyecto4-prev");
+    const proyecto4Next    = document.getElementById("proyecto4-next");
+    const proyecto4Counter = document.getElementById("proyecto4-counter");
+    const proyecto4Dots    = Array.from(document.querySelectorAll<HTMLButtonElement>(".proyecto4-dot"));
+    const proyecto4Slides  = Array.from(proyecto4Track?.children ?? []) as HTMLElement[];
+ 
+    // ─── ESTADO ──────────────────────────────────────────────────
     let currentVisibleItems: HTMLElement[] = [...galleryItems];
     let currentIndex = 0;
-    let closingTimeout: number | undefined;
-
-    const galleryRevealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          const item = entry.target;
-          if (!(item instanceof HTMLElement) || item.classList.contains("is-hidden")) return;
-
-          item.classList.add("is-visible");
-          galleryRevealObserver.unobserve(item);
-        });
-      },
-      {
-        threshold: 0.18,
-        rootMargin: "0px 0px -8% 0px",
-      }
-    );
-
-    const observeVisibleGalleryItems = (items: HTMLElement[]) => {
-      items.forEach((item, index) => {
-        item.classList.remove("sequence-enter", "is-visible");
-        item.style.setProperty("--seq-delay", `${index * 70}ms`);
-        void item.offsetWidth;
-        item.classList.add("sequence-enter");
-        galleryRevealObserver.unobserve(item);
-        galleryRevealObserver.observe(item);
-      });
-    };
-
+    let closingTimeout: ReturnType<typeof setTimeout> | undefined;
+ 
+    // ─── FILTROS ─────────────────────────────────────────────────
     const applyFilter = (filter: string) => {
-      const visibleItems: HTMLElement[] = [];
-
+      const visible: HTMLElement[] = [];
+ 
       galleryItems.forEach((item) => {
         const matches = filter === "all" || item.dataset.category === filter;
-
-        if (matches) {
-          item.classList.remove("is-hidden");
-          visibleItems.push(item);
-        } else {
-          item.classList.add("is-hidden");
-          item.classList.remove("is-visible", "sequence-enter");
-          galleryRevealObserver.unobserve(item);
-        }
+        item.classList.toggle("is-hidden", !matches);
+        if (matches) visible.push(item);
       });
-
-      currentVisibleItems = visibleItems;
-      observeVisibleGalleryItems(visibleItems);
+ 
+      currentVisibleItems = visible;
+ 
+      if (noResults) {
+        noResults.classList.toggle("hidden", visible.length > 0);
+      }
     };
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        document.querySelector(".gallery-filter.is-active")?.classList.remove("is-active");
-        button.classList.add("is-active");
-        applyFilter(button.dataset.filter || "all");
+ 
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach((b) => {
+          b.classList.remove("is-active");
+          b.setAttribute("aria-pressed", "false");
+        });
+        btn.classList.add("is-active");
+        btn.setAttribute("aria-pressed", "true");
+        applyFilter(btn.dataset.filter ?? "all");
       });
     });
-
+ 
+    // ─── LIGHTBOX ────────────────────────────────────────────────
+    const getLightboxElements = () => {
+      if (!lightbox || !lightboxImage || !lightboxCategory || !lightboxTitle || !lightboxCaption) {
+        return null;
+      }
+      return { lightbox, lightboxImage, lightboxCategory, lightboxTitle, lightboxCaption };
+    };
+ 
+    /** Actualiza el contenido del lightbox con fade entre imágenes */
+    const setLightboxContent = (item: HTMLElement) => {
+      const els = getLightboxElements();
+      if (!els) return;
+ 
+      const { lightboxImage, lightboxCategory, lightboxTitle, lightboxCaption } = els;
+ 
+      // Fade out → swap → fade in
+      lightboxImage.classList.add("is-swapping");
+ 
+      const swap = () => {
+        lightboxImage.src = item.dataset.src ?? "";
+        lightboxImage.alt = item.dataset.title ?? "";
+        lightboxTitle.textContent    = item.dataset.title ?? "";
+        lightboxCaption.textContent  = item.dataset.caption ?? "";
+        lightboxCategory.textContent = item.dataset.categoryLabel ?? "";
+ 
+        lightboxImage.onload = () => {
+          lightboxImage.classList.remove("is-swapping");
+          lightboxImage.onload = null;
+        };
+        // Fallback por si la imagen ya está cacheada
+        if (lightboxImage.complete) {
+          lightboxImage.classList.remove("is-swapping");
+        }
+      };
+ 
+      // Esperar al fin del fade-out antes de cambiar src
+      lightboxImage.addEventListener("transitionend", swap, { once: true });
+    };
+ 
     const openLightbox = (item: HTMLElement) => {
-      if (
-        !lightbox ||
-        !(lightboxImage instanceof HTMLImageElement) ||
-        !(lightboxCategory instanceof HTMLElement) ||
-        !(lightboxTitle instanceof HTMLElement) ||
-        !(lightboxCaption instanceof HTMLElement)
-      ) {
-        return;
-      }
-
+      const els = getLightboxElements();
+      if (!els) return;
+ 
       if (closingTimeout !== undefined) {
-        window.clearTimeout(closingTimeout);
+        clearTimeout(closingTimeout);
+        closingTimeout = undefined;
       }
-
-      currentVisibleItems = galleryItems.filter(
-        (galleryItem) => !galleryItem.classList.contains("is-hidden")
-      );
-
+ 
+      currentVisibleItems = galleryItems.filter((g) => !g.classList.contains("is-hidden"));
       currentIndex = currentVisibleItems.indexOf(item);
-
-      lightboxImage.src = item.dataset.src || "";
-      lightboxImage.alt = item.dataset.title || "";
-      lightboxTitle.textContent = item.dataset.title || "";
-      lightboxCaption.textContent = item.dataset.caption || "";
-      lightboxCategory.textContent = item.dataset.category || "";
-
+ 
+      const { lightbox, lightboxImage, lightboxCategory, lightboxTitle, lightboxCaption } = els;
+ 
+      lightboxImage.src            = item.dataset.src ?? "";
+      lightboxImage.alt            = item.dataset.title ?? "";
+      lightboxTitle.textContent    = item.dataset.title ?? "";
+      lightboxCaption.textContent  = item.dataset.caption ?? "";
+      lightboxCategory.textContent = item.dataset.categoryLabel ?? "";
+ 
       lightbox.classList.remove("hidden", "is-closing");
       lightbox.classList.add("is-open");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
+ 
+      // Foco accesible
+      lightboxClose?.focus();
     };
-
+ 
     const updateLightbox = (index: number) => {
-      if (
-        !(lightboxImage instanceof HTMLImageElement) ||
-        !(lightboxCategory instanceof HTMLElement) ||
-        !(lightboxTitle instanceof HTMLElement) ||
-        !(lightboxCaption instanceof HTMLElement) ||
-        currentVisibleItems.length === 0
-      ) {
-        return;
-      }
-
-      const safeIndex = (index + currentVisibleItems.length) % currentVisibleItems.length;
+      if (currentVisibleItems.length === 0) return;
+ 
+      const safeIndex = ((index % currentVisibleItems.length) + currentVisibleItems.length) % currentVisibleItems.length;
       currentIndex = safeIndex;
-
-      const item = currentVisibleItems[safeIndex];
-
-      lightboxImage.src = item.dataset.src || "";
-      lightboxImage.alt = item.dataset.title || "";
-      lightboxTitle.textContent = item.dataset.title || "";
-      lightboxCaption.textContent = item.dataset.caption || "";
-      lightboxCategory.textContent = item.dataset.category || "";
+ 
+      setLightboxContent(currentVisibleItems[safeIndex]);
     };
-
+ 
     const closeLightbox = () => {
       if (!lightbox) return;
-
+ 
       lightbox.classList.remove("is-open");
       lightbox.classList.add("is-closing");
-
-      closingTimeout = window.setTimeout(() => {
-        if (
-          !(lightboxImage instanceof HTMLImageElement) ||
-          !(lightboxTitle instanceof HTMLElement) ||
-          !(lightboxCaption instanceof HTMLElement) ||
-          !(lightboxCategory instanceof HTMLElement)
-        ) {
-          return;
-        }
-
+ 
+      closingTimeout = setTimeout(() => {
+        if (!lightboxImage || !lightboxTitle || !lightboxCaption || !lightboxCategory) return;
+ 
         lightbox.classList.add("hidden");
         lightbox.classList.remove("is-closing");
         lightbox.setAttribute("aria-hidden", "true");
-        lightboxImage.src = "";
-        lightboxImage.alt = "";
-        lightboxTitle.textContent = "";
-        lightboxCaption.textContent = "";
+        lightboxImage.src            = "";
+        lightboxImage.alt            = "";
+        lightboxTitle.textContent    = "";
+        lightboxCaption.textContent  = "";
         lightboxCategory.textContent = "";
         document.body.style.overflow = "";
       }, 260);
     };
-
+ 
     galleryItems.forEach((item) => {
-      const trigger = item.querySelector<HTMLButtonElement>(".image-trigger");
-      trigger?.addEventListener("click", () => openLightbox(item));
+      item.querySelector(".image-trigger")?.addEventListener("click", () => openLightbox(item));
     });
-
+ 
     lightboxClose?.addEventListener("click", closeLightbox);
-
-    lightbox?.addEventListener("click", (event) => {
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-
+ 
+    lightbox?.addEventListener("click", (e) => {
+      const target = e.target as Element;
       if (target === lightbox || target.classList.contains("lightbox-backdrop")) {
         closeLightbox();
       }
     });
-
-    lightboxPrev?.addEventListener("click", () => {
-      updateLightbox(currentIndex - 1);
-    });
-
-    lightboxNext?.addEventListener("click", () => {
-      updateLightbox(currentIndex + 1);
-    });
-
-    document.addEventListener("keydown", (event) => {
+ 
+    lightboxPrev?.addEventListener("click", () => updateLightbox(currentIndex - 1));
+    lightboxNext?.addEventListener("click", () => updateLightbox(currentIndex + 1));
+ 
+    document.addEventListener("keydown", (e) => {
       if (!lightbox || lightbox.classList.contains("hidden")) return;
-
-      if (event.key === "Escape") closeLightbox();
-      if (event.key === "ArrowLeft") updateLightbox(currentIndex - 1);
-      if (event.key === "ArrowRight") updateLightbox(currentIndex + 1);
+      if (e.key === "Escape")      closeLightbox();
+      if (e.key === "ArrowLeft")   updateLightbox(currentIndex - 1);
+      if (e.key === "ArrowRight")  updateLightbox(currentIndex + 1);
     });
-
+ 
+    // ─── CARRUSEL PROYECTO 4 ──────────────────────────────────────
+    if (proyecto4Track && proyecto4Dots.length > 0) {
+      let p4Index = 0;
+      const p4Total = proyecto4Dots.length;
+ 
+      const goToSlide = (index: number) => {
+        p4Index = ((index % p4Total) + p4Total) % p4Total;
+ 
+        proyecto4Track.style.transform = `translateX(-${p4Index * 100}%)`;
+ 
+        proyecto4Dots.forEach((dot, i) => {
+          const active = i === p4Index;
+          dot.classList.toggle("bg-white", active);
+          dot.classList.toggle("bg-white/35", !active);
+          dot.setAttribute("aria-selected", active ? "true" : "false");
+        });
+ 
+        proyecto4Slides.forEach((slide, i) => {
+          slide.setAttribute("aria-hidden", i !== p4Index ? "true" : "false");
+        });
+ 
+        if (proyecto4Counter) {
+          proyecto4Counter.textContent = String(p4Index + 1);
+        }
+      };
+ 
+      proyecto4Prev?.addEventListener("click", () => goToSlide(p4Index - 1));
+      proyecto4Next?.addEventListener("click", () => goToSlide(p4Index + 1));
+ 
+      proyecto4Dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          goToSlide(Number(dot.dataset.index));
+        });
+      });
+ 
+      // Swipe táctil
+      if (proyecto4Root) {
+        let touchStartX = 0;
+        let touchStartY = 0;
+ 
+        proyecto4Root.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].clientX;
+          touchStartY = e.changedTouches[0].clientY;
+        }, { passive: true });
+ 
+        proyecto4Root.addEventListener("touchend", (e) => {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          const dy = e.changedTouches[0].clientY - touchStartY;
+ 
+          // Solo procesar swipes más horizontales que verticales
+          if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+            goToSlide(dx < 0 ? p4Index + 1 : p4Index - 1);
+          }
+        }, { passive: true });
+      }
+ 
+      // Autoplay (pausa al hover)
+      let autoplay = setInterval(() => goToSlide(p4Index + 1), 5000);
+ 
+      proyecto4Root?.addEventListener("mouseenter", () => clearInterval(autoplay));
+      proyecto4Root?.addEventListener("mouseleave", () => {
+        autoplay = setInterval(() => goToSlide(p4Index + 1), 5000);
+      });
+      proyecto4Root?.addEventListener("focusin", () => clearInterval(autoplay));
+      proyecto4Root?.addEventListener("focusout", () => {
+        autoplay = setInterval(() => goToSlide(p4Index + 1), 5000);
+      });
+    }
+ 
+    // ─── REVEAL OBSERVER (generalizado) ───────────────────────────
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const target = entry.target;
-            if (target instanceof HTMLElement) {
-              target.classList.add("is-visible");
-            }
+            (entry.target as HTMLElement).classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.15 }
     );
-
-    document.querySelectorAll<HTMLElement>(".reveal").forEach((el) => {
-      revealObserver.observe(el);
-    });
-
-    applyFilter("all");
+ 
+    document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
   });
 </script>
-
+ 
 <style>
+  /* ── FONDO DINÁMICO ── */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+  }
+ 
+  .orb-1 {
+    width: 110vw; height: 110vh; top: -20vh; left: -20vw;
+    background: radial-gradient(circle at center, rgba(251,146,60,0.08) 0%, transparent 60%);
+    animation: drift-orb-1 22s cubic-bezier(0.4,0,0.2,1) infinite alternate;
+  }
+  .orb-2 {
+    width: 90vw; height: 90vh; bottom: -10vh; right: -10vw;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.04) 0%, transparent 60%);
+    animation: drift-orb-2 26s cubic-bezier(0.4,0,0.2,1) infinite alternate;
+  }
+  .orb-3 {
+    width: 80vw; height: 80vh; top: 30vh; left: 10vw;
+    background: radial-gradient(circle at center, rgba(251,146,60,0.05) 0%, transparent 60%);
+    animation: drift-orb-3 20s cubic-bezier(0.4,0,0.2,1) infinite alternate;
+  }
+ 
+  .bg-grid-pattern {
+    position: absolute; inset: 0; opacity: 0.025; z-index: 1;
+    background-image:
+      linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+ 
+  @keyframes drift-orb-1 {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(4%, 3%, 0) scale(1.05); }
+    100% { transform: translate3d(-2%, 6%, 0) scale(0.95); }
+  }
+  @keyframes drift-orb-2 {
+    0%   { transform: translate3d(0, 0, 0) scale(1.05); }
+    50%  { transform: translate3d(-5%, -4%, 0) scale(0.98); }
+    100% { transform: translate3d(3%, -6%, 0) scale(1.02); }
+  }
+  @keyframes drift-orb-3 {
+    0%   { transform: translate3d(0, 0, 0) scale(0.95); }
+    50%  { transform: translate3d(6%, -2%, 0) scale(1.04); }
+    100% { transform: translate3d(-3%, 4%, 0) scale(1); }
+  }
+ 
+  /* ── FILTROS ── */
   .gallery-filter {
     padding: 10px 18px;
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255,255,255,0.12);
     color: #a1a1aa;
-    background: rgba(255, 255, 255, 0.02);
-    transition:
-      color 0.25s ease,
-      border-color 0.25s ease,
-      background-color 0.25s ease,
-      box-shadow 0.25s ease,
-      transform 0.25s ease;
+    background: rgba(255,255,255,0.02);
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease,
+                box-shadow 0.25s ease, transform 0.25s ease;
   }
-
   .gallery-filter:hover {
     color: white;
-    border-color: rgba(251, 146, 60, 0.45);
+    border-color: rgba(251,146,60,0.45);
     transform: translateY(-1px);
   }
-
   .gallery-filter.is-active {
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(255,255,255,0.96);
     color: black;
-    border-color: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 10px 28px rgba(255, 255, 255, 0.08);
+    border-color: rgba(255,255,255,0.96);
+    box-shadow: 0 10px 28px rgba(255,255,255,0.08);
   }
-
+ 
+  /* ── ANIMACIONES DE ENTRADA ── */
+  .page-fade-in {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: pageFadeIn 0.7s ease forwards;
+  }
+  .page-fade-in-delay-1 { animation-delay: 0.12s; }
+  .page-fade-in-delay-2 { animation-delay: 0.2s; }
+ 
+  @keyframes pageFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+ 
   .reveal {
     opacity: 0;
     transform: translateY(26px);
-    transition:
-      opacity 0.75s ease,
-      transform 0.75s ease;
-    will-change: opacity, transform;
+    transition: opacity 0.75s ease, transform 0.75s ease;
   }
-
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+ 
+  /* ── GALERÍA ── */
   .gallery-item {
-    opacity: 0;
-    transform: translateY(28px) scale(0.988);
-    filter: brightness(0.78) blur(5px);
-    transition:
-      opacity 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
-      filter 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 0.25s ease,
-      box-shadow 0.25s ease;
-    will-change: opacity, transform, filter;
-  }
-
-  .gallery-item.sequence-enter {
-    transition-delay: var(--seq-delay, 0ms);
-  }
-
-  .gallery-item.is-visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: brightness(1) blur(0);
+    transform: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    will-change: transform;
   }
-
-  .gallery-item.is-hidden {
-    display: none !important;
-  }
-
-  .gallery-item:hover {
-    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.28);
-  }
-
+  .gallery-item.is-hidden { display: none !important; }
+  .gallery-item:hover { box-shadow: 0 16px 42px rgba(0,0,0,0.28); }
+ 
   .gallery-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition:
-      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-      filter 0.45s ease;
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    transition: transform 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.45s ease;
   }
-
   .gallery-item:hover .gallery-image {
     transform: scale(1.045);
     filter: brightness(1.03);
   }
-
+ 
+  /* ── LIGHTBOX ── */
   .lightbox {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding: 2rem;
+    position: fixed; inset: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    gap: 1rem; padding: 2rem;
   }
-
-  .lightbox.hidden {
-    display: none;
-  }
-
+  .lightbox.hidden { display: none; }
+ 
   .lightbox-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.94);
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.94);
     opacity: 0;
     transition: opacity 0.26s ease;
   }
-
+ 
   .lightbox-shell,
   .lightbox-close,
-  .lightbox-nav {
-    position: relative;
-    z-index: 2;
-  }
-
+  .lightbox-nav { position: relative; z-index: 2; }
+ 
   .lightbox-shell {
     width: min(1180px, 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex; flex-direction: column; align-items: center;
     opacity: 0;
     transform: translateY(18px) scale(0.985);
-    transition:
-      opacity 0.26s ease,
-      transform 0.26s ease;
+    transition: opacity 0.26s ease, transform 0.26s ease;
   }
-
-  .lightbox.is-open .lightbox-backdrop {
-    opacity: 1;
+ 
+  .lightbox-img-wrap {
+    width: 100%;
+    display: flex; justify-content: center;
   }
-
-  .lightbox.is-open .lightbox-shell {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  .lightbox.is-closing .lightbox-backdrop {
-    opacity: 0;
-  }
-
-  .lightbox.is-closing .lightbox-shell {
-    opacity: 0;
-    transform: translateY(18px) scale(0.985);
-  }
-
+ 
+  .lightbox.is-open .lightbox-backdrop  { opacity: 1; }
+  .lightbox.is-open .lightbox-shell     { opacity: 1; transform: translateY(0) scale(1); }
+  .lightbox.is-closing .lightbox-backdrop { opacity: 0; }
+  .lightbox.is-closing .lightbox-shell  { opacity: 0; transform: translateY(18px) scale(0.985); }
+ 
   .lightbox-image {
     max-width: min(1180px, 100%);
     max-height: 76vh;
     border-radius: 24px;
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    transform: scale(0.96);
-    transition: opacity 0.26s ease, transform 0.26s ease;
-  }
-
-  .lightbox.is-open .lightbox-image {
+    box-shadow: 0 24px 70px rgba(0,0,0,0.6);
     opacity: 1;
-    transform: scale(1);
+    transition: opacity 0.18s ease, transform 0.18s ease;
   }
-
+ 
+  /* Fade entre imágenes al navegar */
+  .lightbox-image.is-swapping {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+ 
   .lightbox.is-closing .lightbox-image {
     opacity: 0;
     transform: scale(0.94);
   }
-
+ 
   .lightbox-meta {
     width: min(1180px, 100%);
     padding-top: 1rem;
     text-align: center;
   }
-
   .lightbox-category {
     color: rgb(251 146 60);
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    margin-bottom: 0.5rem;
+    font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.22em; margin-bottom: 0.5rem;
   }
-
   .lightbox-title {
-    color: white;
-    font-size: 1.35rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    color: white; font-size: 1.35rem; font-weight: 600; margin-bottom: 0.5rem;
   }
-
   .lightbox-caption {
-    color: #a1a1aa;
-    line-height: 1.8;
-    max-width: 760px;
-    margin: 0 auto;
+    color: #a1a1aa; line-height: 1.8;
+    max-width: 760px; margin: 0 auto;
   }
-
+ 
   .lightbox-close {
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    width: 46px;
-    height: 46px;
+    position: absolute; top: 20px; right: 24px;
+    width: 46px; height: 46px;
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.08);
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.08);
+    color: white; font-size: 1.2rem; cursor: pointer;
     transition: all 0.25s ease;
-    opacity: 0;
-    transform: translateY(-8px);
+    opacity: 0; transform: translateY(-8px);
   }
-
+ 
   .lightbox.is-open .lightbox-close,
-  .lightbox.is-open .lightbox-nav {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  .lightbox.is-open .lightbox-nav   { opacity: 1; transform: translateY(0); }
+ 
   .lightbox.is-closing .lightbox-close,
-  .lightbox.is-closing .lightbox-nav {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-
-  .lightbox-close:hover {
-    background: white;
-    color: black;
-  }
-
+  .lightbox.is-closing .lightbox-nav { opacity: 0; transform: translateY(-8px); }
+ 
+  .lightbox-close:hover { background: white; color: black; }
+ 
   .lightbox-nav {
-    width: 52px;
-    height: 52px;
+    width: 52px; height: 52px;
     border-radius: 9999px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.08);
-    color: white;
-    font-size: 2rem;
-    line-height: 1;
-    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.08);
+    color: white; font-size: 2rem; line-height: 1;
+    cursor: pointer; flex-shrink: 0;
     transition: all 0.25s ease;
-    flex-shrink: 0;
-    opacity: 0;
-    transform: translateY(-8px);
+    opacity: 0; transform: translateY(-8px);
   }
-
-  .lightbox-nav:hover {
-    background: white;
-    color: black;
-  }
-
+  .lightbox-nav:hover { background: white; color: black; }
+ 
   @media (max-width: 768px) {
-    .lightbox {
-      padding: 1rem;
-    }
-
+    .lightbox { padding: 1rem; }
+ 
     .lightbox-nav {
-      position: absolute;
-      bottom: 22px;
-      z-index: 2;
-      width: 46px;
-      height: 46px;
-      font-size: 1.7rem;
+      position: absolute; bottom: 22px; z-index: 2;
+      width: 46px; height: 46px; font-size: 1.7rem;
     }
-
-    .lightbox-prev {
-      left: 18px;
-    }
-
-    .lightbox-next {
-      right: 18px;
-    }
-
-    .lightbox-image {
-      max-height: 68vh;
-      border-radius: 18px;
-    }
+    .lightbox-prev { left: 18px; }
+    .lightbox-next { right: 18px; }
+ 
+    .lightbox-image { max-height: 68vh; border-radius: 18px; }
+  }
+ 
+  /* ── REDUCIR MOVIMIENTO ── */
+  @media (prefers-reduced-motion: reduce) {
+    .orb { animation: none; }
+    .page-fade-in { animation: none; opacity: 1; transform: none; }
+    .gallery-image { transition: none; }
+    .lightbox-image,
+    .lightbox-shell,
+    .lightbox-backdrop { transition: none; }
   }
 </style>

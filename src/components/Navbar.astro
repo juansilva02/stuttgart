@@ -10,13 +10,15 @@ const { isHome = false, currentPage = 'home' } = Astro.props;
 <nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/70 backdrop-blur-md">
   <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2 text-white font-bold tracking-tight hover:opacity-80 transition">
-      <img src="/logos/stuttgart-logo.svg" alt="Stuttgart Logo" class="h-8 md:h-10" />
+      <img src="/logos/stuttgart-logotipo.svg" alt="Stuttgart Logo" class="h-8 md:h-10" />
     </a>
 
     <div class="hidden md:flex items-center gap-8 text-sm text-zinc-300">
       {isHome ? (
         <>
-          <a href="#inicio" class="hover:text-orange-400 transition">Inicio</a>
+          <span id="nav-inicio-home" class="pointer-events-none opacity-0 transition-opacity duration-300">
+            <a href="#inicio" class="hover:text-orange-400 transition">Inicio</a>
+          </span>
           <a href="#about" class="hover:text-orange-400 transition">Nosotros</a>
           <a href="#servicios" class="hover:text-orange-400 transition">Servicios</a>
           <a href="#proyectos" class="hover:text-orange-400 transition">Proyectos</a>
@@ -37,4 +39,23 @@ const { isHome = false, currentPage = 'home' } = Astro.props;
       )}
     </div>
   </div>
+  <script>
+  const updateInicioVisibility = () => {
+    const inicioItem = document.getElementById('nav-inicio-home');
+    if (!inicioItem) return;
+
+    const showInicio = window.scrollY > 80;
+
+    if (showInicio) {
+      inicioItem.classList.remove('opacity-0', 'pointer-events-none');
+      inicioItem.classList.add('opacity-100');
+    } else {
+      inicioItem.classList.remove('opacity-100');
+      inicioItem.classList.add('opacity-0', 'pointer-events-none');
+    }
+  };
+
+  updateInicioVisibility();
+  window.addEventListener('scroll', updateInicioVisibility);
+</script>
 </nav>
