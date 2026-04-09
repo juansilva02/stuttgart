@@ -1,0 +1,85 @@
+---
+const href = "https://wa.me/5491123921232";
+---
+
+<div class="whatsapp-float-wrap">
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+    class="whatsapp-float"
+  >
+    <span class="whatsapp-float__label">WhatsApp</span>
+  </a>
+</div>
+
+<style>
+  .whatsapp-float-wrap {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 50;
+  }
+
+  .whatsapp-float {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.5rem;
+    padding: 0.95rem 1.35rem;
+    border-radius: 999px;
+    border: 1px solid rgba(217,255,230,0.32);
+    background: linear-gradient(135deg, #25D366 0%, #1ebe5d 55%, #128C7E 100%);
+    color: white;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      0 18px 50px rgba(18,140,126,0.34);
+    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+    animation: whatsapp-float 2.8s ease-in-out infinite;
+  }
+
+  .whatsapp-float:hover {
+    transform: translateY(-2px) scale(1.02);
+    filter: brightness(1.04);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      0 22px 56px rgba(18,140,126,0.38);
+  }
+
+  .whatsapp-float:focus-visible {
+    outline: 2px solid #25D366;
+    outline-offset: 3px;
+  }
+
+  .whatsapp-float__label {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+
+  @keyframes whatsapp-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  @media (max-width: 768px) {
+    .whatsapp-float-wrap {
+      right: 1rem;
+      bottom: 1rem;
+    }
+
+    .whatsapp-float {
+      min-height: 3.25rem;
+      padding: 0.9rem 1.15rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .whatsapp-float {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>

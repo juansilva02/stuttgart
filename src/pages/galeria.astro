@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 import {
   filtrosGaleria,
   categoriaLabel,
@@ -206,6 +207,12 @@ import {
                   />
                   <div class="absolute inset-0 bg-linear-to-t from-black/95 via-black/28 to-black/5 pointer-events-none"></div>
                   <div class="absolute inset-0 ring-1 ring-inset ring-white/8 pointer-events-none"></div>
+
+                  <div class="absolute right-4 top-4 flex items-center gap-2 pointer-events-none">
+                    <span class="gallery-chip">
+                      Ver imagen
+                    </span>
+                  </div>
  
                   <div class="absolute inset-x-0 bottom-0 p-5 md:p-6 pointer-events-none">
                     <p class="text-orange-400 text-[11px] uppercase tracking-[0.22em] mb-2">
@@ -250,13 +257,13 @@ import {
           <div class="flex flex-wrap gap-4">
             <a
               href="/#contacto"
-              class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+              class="inline-flex items-center justify-center rounded-xl bg-linear-to-r from-orange-500 to-amber-500 px-6 py-3 font-medium text-white shadow-[0_12px_30px_rgba(249,115,22,0.28)] transition hover:scale-[1.02] hover:shadow-[0_16px_40px_rgba(249,115,22,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
             >
               Solicitar contacto
             </a>
             <a
               href="/#servicios"
-              class="rounded-xl border border-white/15 px-6 py-3 font-medium text-white transition hover:border-orange-400/50 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
+              class="rounded-xl bg-white px-6 py-3 font-medium text-black transition hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-orange-400"
             >
               Ver servicios
             </a>
@@ -293,6 +300,7 @@ import {
  
         <div class="lightbox-shell">
           <div class="lightbox-img-wrap">
+            <div id="lightbox-index" class="lightbox-index" aria-live="polite"></div>
             <img id="lightbox-image" src="" alt="" class="lightbox-image" />
           </div>
           <div class="lightbox-meta">
@@ -313,6 +321,7 @@ import {
     </div>
   </div>
  
+  <WhatsAppFloat />
   <Footer />
 </Layout>
  
@@ -325,6 +334,7 @@ import {
  
     const lightbox         = document.getElementById("lightbox");
     const lightboxImage    = document.getElementById("lightbox-image") as HTMLImageElement | null;
+    const lightboxIndex    = document.getElementById("lightbox-index");
     const lightboxCategory = document.getElementById("lightbox-category");
     const lightboxTitle    = document.getElementById("lightbox-title");
     const lightboxCaption  = document.getElementById("lightbox-caption");
@@ -376,10 +386,10 @@ import {
  
     // ─── LIGHTBOX ────────────────────────────────────────────────
     const getLightboxElements = () => {
-      if (!lightbox || !lightboxImage || !lightboxCategory || !lightboxTitle || !lightboxCaption) {
+      if (!lightbox || !lightboxImage || !lightboxCategory || !lightboxTitle || !lightboxCaption || !lightboxIndex) {
         return null;
       }
-      return { lightbox, lightboxImage, lightboxCategory, lightboxTitle, lightboxCaption };
+      return { lightbox, lightboxImage, lightboxIndex, lightboxCategory, lightboxTitle, lightboxCaption };
     };
  
     /** Actualiza el contenido del lightbox con fade entre imágenes */
@@ -387,7 +397,7 @@ import {
       const els = getLightboxElements();
       if (!els) return;
  
-      const { lightboxImage, lightboxCategory, lightboxTitle, lightboxCaption } = els;
+      const { lightboxImage, lightboxIndex, lightboxCategory, lightboxTitle, lightboxCaption } = els;
  
       // Fade out → swap → fade in
       lightboxImage.classList.add("is-swapping");
@@ -398,6 +408,7 @@ import {
         lightboxTitle.textContent    = item.dataset.title ?? "";
         lightboxCaption.textContent  = item.dataset.caption ?? "";
         lightboxCategory.textContent = item.dataset.categoryLabel ?? "";
+        lightboxIndex.textContent    = `${currentIndex + 1} / ${currentVisibleItems.length}`;
  
         lightboxImage.onload = () => {
           lightboxImage.classList.remove("is-swapping");
@@ -425,13 +436,14 @@ import {
       currentVisibleItems = galleryItems.filter((g) => !g.classList.contains("is-hidden"));
       currentIndex = currentVisibleItems.indexOf(item);
  
-      const { lightbox, lightboxImage, lightboxCategory, lightboxTitle, lightboxCaption } = els;
+      const { lightbox, lightboxImage, lightboxIndex, lightboxCategory, lightboxTitle, lightboxCaption } = els;
  
       lightboxImage.src            = item.dataset.src ?? "";
       lightboxImage.alt            = item.dataset.title ?? "";
       lightboxTitle.textContent    = item.dataset.title ?? "";
       lightboxCaption.textContent  = item.dataset.caption ?? "";
       lightboxCategory.textContent = item.dataset.categoryLabel ?? "";
+      lightboxIndex.textContent    = `${currentIndex + 1} / ${currentVisibleItems.length}`;
  
       lightbox.classList.remove("hidden", "is-closing");
       lightbox.classList.add("is-open");
@@ -458,7 +470,7 @@ import {
       lightbox.classList.add("is-closing");
  
       closingTimeout = setTimeout(() => {
-        if (!lightboxImage || !lightboxTitle || !lightboxCaption || !lightboxCategory) return;
+        if (!lightboxImage || !lightboxTitle || !lightboxCaption || !lightboxCategory || !lightboxIndex) return;
  
         lightbox.classList.add("hidden");
         lightbox.classList.remove("is-closing");
@@ -468,6 +480,7 @@ import {
         lightboxTitle.textContent    = "";
         lightboxCaption.textContent  = "";
         lightboxCategory.textContent = "";
+        lightboxIndex.textContent    = "";
         document.body.style.overflow = "";
       }, 260);
     };
@@ -631,24 +644,65 @@ import {
  
   /* ── FILTROS ── */
   .gallery-filter {
-    padding: 10px 18px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    min-height: 3.25rem;
+    padding: 0.8rem 1.15rem;
     border-radius: 9999px;
-    border: 1px solid rgba(255,255,255,0.12);
-    color: #a1a1aa;
-    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #d4d4d8;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+      rgba(10,10,10,0.72);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.06),
+      0 10px 28px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease,
-                box-shadow 0.25s ease, transform 0.25s ease;
+                box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  }
+  .gallery-filter::before {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: rgba(251,146,60,0.45);
+    box-shadow: 0 0 0 4px rgba(251,146,60,0.08);
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
   }
   .gallery-filter:hover {
     color: white;
-    border-color: rgba(251,146,60,0.45);
-    transform: translateY(-1px);
+    border-color: rgba(251,146,60,0.42);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03)),
+      rgba(16,16,16,0.84);
+    transform: translateY(-2px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      0 16px 34px rgba(0,0,0,0.24);
   }
   .gallery-filter.is-active {
-    background: rgba(255,255,255,0.96);
-    color: black;
-    border-color: rgba(255,255,255,0.96);
-    box-shadow: 0 10px 28px rgba(255,255,255,0.08);
+    background: linear-gradient(135deg, rgba(251,146,60,0.96), rgba(249,115,22,0.9));
+    color: white;
+    border-color: rgba(251,191,36,0.45);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      0 16px 36px rgba(249,115,22,0.28);
+  }
+  .gallery-filter.is-active::before {
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.16);
+    transform: scale(1.1);
+  }
+  .gallery-filter:focus-visible {
+    outline: 2px solid rgba(251,146,60,0.9);
+    outline-offset: 3px;
   }
  
   /* ── ANIMACIONES DE ENTRADA ── */
@@ -679,16 +733,43 @@ import {
     will-change: transform;
   }
   .gallery-item.is-hidden { display: none !important; }
-  .gallery-item:hover { box-shadow: 0 16px 42px rgba(0,0,0,0.28); }
- 
+  .gallery-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(251,146,60,0.28);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.34);
+  }
+
   .gallery-image {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: center;
     transition: transform 0.7s cubic-bezier(0.22,1,0.36,1), filter 0.45s ease;
   }
   .gallery-item:hover .gallery-image {
-    transform: scale(1.045);
-    filter: brightness(1.03);
+    transform: scale(1.06);
+    filter: brightness(1.08);
+  }
+
+  .gallery-chip {
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(0,0,0,0.58);
+    padding: 0.45rem 0.75rem;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .gallery-item:hover .gallery-chip,
+  .gallery-item:focus-within .gallery-chip {
+    opacity: 1;
+    transform: translateY(0);
+    border-color: rgba(251,146,60,0.38);
   }
  
   /* ── LIGHTBOX ── */
@@ -720,6 +801,7 @@ import {
  
   .lightbox-img-wrap {
     width: 100%;
+    position: relative;
     display: flex; justify-content: center;
   }
  
@@ -746,6 +828,22 @@ import {
   .lightbox.is-closing .lightbox-image {
     opacity: 0;
     transform: scale(0.94);
+  }
+
+  .lightbox-index {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 3;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(0,0,0,0.5);
+    padding: 0.45rem 0.8rem;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    backdrop-filter: blur(10px);
   }
  
   .lightbox-meta {
@@ -806,8 +904,9 @@ import {
     }
     .lightbox-prev { left: 18px; }
     .lightbox-next { right: 18px; }
- 
+
     .lightbox-image { max-height: 68vh; border-radius: 18px; }
+    .lightbox-index { right: 14px; top: 14px; }
   }
  
   /* ── REDUCIR MOVIMIENTO ── */
