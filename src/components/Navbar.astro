@@ -4,7 +4,7 @@ interface Props {
   currentPage?: 'home' | 'galeria' | 'unite';
 }
 
-import logotipo from "../assets/logos/stuttgart-logotipo.svg";
+import logotipoUrl from "../assets/logos/stuttgart-logotipo.svg?url";
 
 const { isHome = false, currentPage = 'home' } = Astro.props;
 ---
@@ -15,7 +15,7 @@ const { isHome = false, currentPage = 'home' } = Astro.props;
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
     <a href="/" class="flex items-center gap-2 font-bold tracking-tight text-white transition hover:opacity-80">
-      <img src={logotipo} alt="Stuttgart Logo" class="h-8 md:h-10" />
+      <img src={logotipoUrl} alt="Stuttgart Logo" class="h-8 md:h-10" />
     </a>
 
     <!-- Desktop -->

@@ -1,10 +1,14 @@
+---
+import logotipoUrl from "../assets/logos/stuttgart-logotipo.svg?url";
+---
+
 <footer class="relative border-t border-white/10 bg-black text-white px-6 py-16">
   <div class="max-w-6xl mx-auto">
     <div class="grid md:grid-cols-3 gap-12 mb-12">
       <!-- Brand -->
       <div class="md:col-span-1">
         <a href="/" class="inline-block mb-4">
-          <img src="/src/assets/logos/stuttgart-logotipo.svg" alt="Stuttgart Logo" class="h-8 md:h-10" />
+          <img src={logotipoUrl} alt="Stuttgart Logo" class="h-8 md:h-10" />
         </a>
         <p class="text-zinc-400 text-sm leading-7">
           Ingeniería eléctrica y electrónica aplicada con enfoque en calidad, seguridad y cumplimiento normativo.

@@ -10,6 +10,37 @@ import tablero01 from "../assets/gallery/tableros/tablero-01.jpg";
 import medicion01 from "../assets/gallery/mediciones/medicion-01.jpg";
 import medicion02 from "../assets/gallery/mediciones/medicion-02.jpg";
 import p4_7 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-07.jpg";
+import genrodLogoUrl from "../assets/brands/genrod.svg?url";
+import conextubeLogoUrl from "../assets/brands/conextube.svg?url";
+import macroledLogoUrl from "../assets/brands/macroled.png?url";
+import trefiLogoUrl from "../assets/brands/trefi.png?url";
+import prysmianLogoUrl from "../assets/brands/prysmian.png?url";
+import cambreLogoUrl from "../assets/brands/cambre.png?url";
+import milwaukeeLogoUrl from "../assets/brands/milwaukee.png?url";
+
+const partnerBrands = [
+  { name: "Genrod", href: "https://www.genrod.com.ar/home", logo: genrodLogoUrl, imgAlt: "Logo Genrod", logoClass: "h-9 w-auto" },
+  { name: "Conextube", href: "https://www.conextube.com/", logo: conextubeLogoUrl, imgAlt: "Logo Conextube", logoClass: "h-8 w-auto" },
+  { name: "Moredo", href: "https://www.moredo.com.ar/", wordmarkClass: "text-white tracking-[0.28em]" },
+  { name: "Gabexel", href: "https://www.gabexel.com.ar/", wordmarkClass: "text-zinc-100 tracking-[0.18em]" },
+  { name: "Bahco", href: "https://www.bahco.com/ar_es/", wordmarkClass: "text-[#f47b20] tracking-[0.22em]" },
+  { name: "Macroled", href: "https://www.macroled.com.ar/", logo: macroledLogoUrl, imgAlt: "Logo Macroled", logoClass: "h-10 w-auto" },
+  { name: "IMSA", href: "https://imsa.com.ar/", wordmarkClass: "text-white tracking-[0.34em]" },
+  { name: "Trefi", href: "https://trefi.com.ar/", logo: trefiLogoUrl, imgAlt: "Logo Trefi", logoClass: "h-8 w-auto" },
+  { name: "Prysmian", href: "https://ar.prysmian.com/es", logo: prysmianLogoUrl, imgAlt: "Logo Prysmian", logoClass: "h-8 w-auto" },
+  { name: "3M", href: "https://www.3m.com.ar/3M/es_AR/inicio/", wordmarkClass: "text-[#ff3030] tracking-[0.22em]" },
+  { name: "Schneider Electric", href: "https://www.se.com/ar/es/", wordmarkClass: "text-[#3fd05e] tracking-[0.12em]" },
+  { name: "Kalop", href: "https://kalop.com.ar/", wordmarkClass: "text-white tracking-[0.22em]" },
+  { name: "Cambre", href: "https://www.cambre.com.ar/", logo: cambreLogoUrl, imgAlt: "Logo Cambre", logoClass: "h-9 w-auto" },
+  { name: "DeWalt", href: "https://ar.dewalt.global/", wordmarkClass: "text-[#ffd04d] tracking-[0.2em]" },
+  { name: "Einhell", href: "https://www.einhell.com.ar/", wordmarkClass: "text-[#e53935] tracking-[0.16em]" },
+  { name: "Bosch", href: "https://www.bosch.com.ar/", wordmarkClass: "text-[#ea0016] tracking-[0.18em]" },
+  { name: "Chint", href: "https://www.chint.com.ar/", wordmarkClass: "text-[#f3b21a] tracking-[0.22em]" },
+  { name: "Milwaukee", href: "https://milwaukee.ar/", logo: milwaukeeLogoUrl, imgAlt: "Logo Milwaukee", logoClass: "h-9 w-auto" },
+  { name: "Siemens", href: "https://www.siemens.com/", wordmarkClass: "text-[#00c1d4] tracking-[0.22em]" },
+  { name: "ABB", href: "https://new.abb.com/south-america", wordmarkClass: "text-[#ff2a2a] tracking-[0.22em]" },
+];
+const partnerBrandsLoop = [...partnerBrands, ...partnerBrands];
 ---
  
 <Layout title="Stuttgart Ingeniería Electrónica">
@@ -296,6 +327,58 @@ import p4_7 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-07.jpg";
   </section>
  
   <!-- ══ CONTACTO ═══════════════════════════════════════════════════════════ -->
+  <!-- ══ MARCAS ═══════════════════════════════════════════════════════════════ -->
+  <section
+    id="marcas"
+    class="relative overflow-hidden bg-linear-to-b from-black via-zinc-950 to-black text-white px-6 py-24"
+  >
+    <div class="absolute left-1/2 top-0 h-56 w-56 -translate-x-1/2 rounded-full bg-orange-500/8 blur-3xl pointer-events-none"></div>
+
+    <div class="relative mx-auto max-w-6xl">
+      <div class="mb-10 text-center reveal reveal-up">
+        <p class="text-orange-400 text-sm uppercase tracking-[0.2em] mb-3">
+          Marcas
+        </p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+          Trabajamos con marcas de referencia
+        </h2>
+        <p class="mx-auto max-w-3xl text-zinc-400 leading-8">
+          Seleccionamos fabricantes y proveedores con presencia consolidada en el mercado para asegurar continuidad, compatibilidad y respaldo técnico en cada proyecto.
+        </p>
+      </div>
+
+      <div class="partner-marquee reveal reveal-up" aria-label="Marcas con las que trabajamos">
+        <div class="partner-track">
+          {partnerBrandsLoop.map((brand, index) => (
+            <a
+              href={brand.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="partner-card"
+              aria-label={`Ir al sitio de ${brand.name}`}
+              aria-hidden={index >= partnerBrands.length ? "true" : "false"}
+              tabindex={index >= partnerBrands.length ? "-1" : undefined}
+            >
+              <span class="partner-card__glow"></span>
+              {brand.logo ? (
+                <img
+                  src={brand.logo}
+                  alt={brand.imgAlt}
+                  class:list={["partner-logo", brand.logoClass]}
+                  loading="lazy"
+                />
+              ) : (
+                <span class:list={["partner-wordmark", brand.wordmarkClass]}>
+                  {brand.name}
+                </span>
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section
     id="contacto"
     class="relative overflow-hidden bg-linear-to-b from-black via-orange-950/10 to-black text-white px-6 py-24"
@@ -474,6 +557,83 @@ import p4_7 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-07.jpg";
   .reveal-left  { transform: translateX(-36px); }
   .reveal-right { transform: translateX(36px); }
   .reveal.is-visible { opacity: 1; transform: translate(0, 0); }
+
+  /* ══ MARCAS ══ */
+  .partner-marquee {
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .partner-track {
+    display: flex;
+    width: max-content;
+    gap: 1rem;
+    animation: partner-scroll 40s linear infinite;
+  }
+
+  .partner-marquee:hover .partner-track {
+    animation-play-state: paused;
+  }
+
+  .partner-card {
+    position: relative;
+    display: flex;
+    min-width: 12rem;
+    height: 5.5rem;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+      linear-gradient(180deg, rgba(24,24,27,0.96), rgba(9,9,11,0.98));
+    padding: 1.25rem 1.5rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .partner-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(251,146,60,0.35);
+    background:
+      linear-gradient(135deg, rgba(251,146,60,0.12), rgba(255,255,255,0.03)),
+      linear-gradient(180deg, rgba(24,24,27,0.98), rgba(9,9,11,1));
+  }
+
+  .partner-card__glow {
+    position: absolute;
+    inset: auto auto -2.5rem 50%;
+    width: 8rem;
+    height: 4rem;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(249,115,22,0.16), transparent 70%);
+    pointer-events: none;
+  }
+
+  .partner-logo {
+    position: relative;
+    z-index: 1;
+    max-width: 100%;
+    object-fit: contain;
+    filter: saturate(1.05);
+  }
+
+  .partner-wordmark {
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @keyframes partner-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 0.5rem)); }
+  }
  
   /* ── FAQ ── */
   details {
@@ -522,6 +682,19 @@ import p4_7 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-07.jpg";
     .reveal.is-visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    .partner-track {
+      gap: 0.75rem;
+      animation-duration: 32s;
+    }
+    .partner-card {
+      min-width: 10.5rem;
+      height: 4.75rem;
+      border-radius: 1rem;
+      padding: 1rem 1.1rem;
+    }
+    .partner-wordmark {
+      font-size: 0.85rem;
     }
     .rounded-3xl,
     .rounded-2xl { border-radius: 1rem; }
