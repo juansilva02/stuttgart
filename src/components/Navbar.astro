@@ -4,58 +4,177 @@ interface Props {
   currentPage?: 'home' | 'galeria' | 'unite';
 }
 
+import logotipo from "../assets/logos/stuttgart-logotipo.svg";
+
 const { isHome = false, currentPage = 'home' } = Astro.props;
 ---
 
-<nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/70 backdrop-blur-md">
-  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2 text-white font-bold tracking-tight hover:opacity-80 transition">
-      <img src="/src/assets/logos/stuttgart-logotipo.svg" alt="Stuttgart Logo" class="h-8 md:h-10" />
+<nav
+  id="site-navbar"
+  class="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-md transition-transform duration-300"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+    <a href="/" class="flex items-center gap-2 font-bold tracking-tight text-white transition hover:opacity-80">
+      <img src={logotipo} alt="Stuttgart Logo" class="h-8 md:h-10" />
     </a>
 
-    <div class="hidden md:flex items-center gap-8 text-sm text-zinc-300">
+    <!-- Desktop -->
+    <div class="hidden items-center gap-8 text-sm text-zinc-300 md:flex">
       {isHome ? (
         <>
           <span id="nav-inicio-home" class="pointer-events-none opacity-0 transition-opacity duration-300">
-            <a href="#inicio" class="hover:text-orange-400 transition">Inicio</a>
+            <a href="#inicio" class="transition hover:text-orange-400">Inicio</a>
           </span>
-          <a href="#about" class="hover:text-orange-400 transition">Nosotros</a>
-          <a href="#servicios" class="hover:text-orange-400 transition">Servicios</a>
-          <a href="#proyectos" class="hover:text-orange-400 transition">Proyectos</a>
-          <a href="/galeria" class={currentPage === 'galeria' ? 'text-orange-400' : 'hover:text-orange-400 transition'}>Galería</a>
-          <a href="#contacto" class="hover:text-orange-400 transition">Contacto</a>
-          <a href="#faq" class="hover:text-orange-400 transition">FAQ</a>
+          <a href="#about" class="transition hover:text-orange-400">Nosotros</a>
+          <a href="#servicios" class="transition hover:text-orange-400">Servicios</a>
+          <a href="#proyectos" class="transition hover:text-orange-400">Proyectos</a>
+          <a href="/galeria" class={currentPage === 'galeria' ? 'text-orange-400' : 'transition hover:text-orange-400'}>Galería</a>
+          <a href="#contacto" class="transition hover:text-orange-400">Contacto</a>
+          <a href="#faq" class="transition hover:text-orange-400">FAQ</a>
         </>
       ) : (
         <>
-          <a href="/#inicio" class="hover:text-orange-400 transition">Inicio</a>
-          <a href="/#about" class="hover:text-orange-400 transition">Nosotros</a>
-          <a href="/#servicios" class="hover:text-orange-400 transition">Servicios</a>
-          <a href="/#proyectos" class="hover:text-orange-400 transition">Proyectos</a>
-          <a href="/galeria" class={currentPage === 'galeria' ? 'text-orange-400' : 'hover:text-orange-400 transition'}>Galería</a>
-          <a href="/#contacto" class="hover:text-orange-400 transition">Contacto</a>
-          <a href="/#faq" class="hover:text-orange-400 transition">FAQ</a>
+          <a href="/#inicio" class="transition hover:text-orange-400">Inicio</a>
+          <a href="/#about" class="transition hover:text-orange-400">Nosotros</a>
+          <a href="/#servicios" class="transition hover:text-orange-400">Servicios</a>
+          <a href="/#proyectos" class="transition hover:text-orange-400">Proyectos</a>
+          <a href="/galeria" class={currentPage === 'galeria' ? 'text-orange-400' : 'transition hover:text-orange-400'}>Galería</a>
+          <a href="/#contacto" class="transition hover:text-orange-400">Contacto</a>
+          <a href="/#faq" class="transition hover:text-orange-400">FAQ</a>
+        </>
+      )}
+    </div>
+
+    <!-- Mobile button -->
+    <button
+      id="mobile-menu-button"
+      type="button"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="inline-flex items-center justify-center rounded-xl border border-white/15 p-2 text-white transition hover:border-orange-400/50 hover:text-orange-400 md:hidden"
+    >
+      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+
+      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="max-h-0 overflow-hidden border-t border-white/0 bg-black/95 transition-all duration-300 md:hidden"
+  >
+    <div class="flex flex-col px-6 py-4 text-sm text-zinc-300">
+      {isHome ? (
+        <>
+          <a href="#inicio" class="border-b border-white/10 py-3 transition hover:text-orange-400">Inicio</a>
+          <a href="#about" class="border-b border-white/10 py-3 transition hover:text-orange-400">Nosotros</a>
+          <a href="#servicios" class="border-b border-white/10 py-3 transition hover:text-orange-400">Servicios</a>
+          <a href="#proyectos" class="border-b border-white/10 py-3 transition hover:text-orange-400">Proyectos</a>
+          <a href="/galeria" class={`border-b border-white/10 py-3 ${currentPage === 'galeria' ? 'text-orange-400' : 'transition hover:text-orange-400'}`}>Galería</a>
+          <a href="#contacto" class="border-b border-white/10 py-3 transition hover:text-orange-400">Contacto</a>
+          <a href="#faq" class="py-3 transition hover:text-orange-400">FAQ</a>
+        </>
+      ) : (
+        <>
+          <a href="/#inicio" class="border-b border-white/10 py-3 transition hover:text-orange-400">Inicio</a>
+          <a href="/#about" class="border-b border-white/10 py-3 transition hover:text-orange-400">Nosotros</a>
+          <a href="/#servicios" class="border-b border-white/10 py-3 transition hover:text-orange-400">Servicios</a>
+          <a href="/#proyectos" class="border-b border-white/10 py-3 transition hover:text-orange-400">Proyectos</a>
+          <a href="/galeria" class={`border-b border-white/10 py-3 ${currentPage === 'galeria' ? 'text-orange-400' : 'transition hover:text-orange-400'}`}>Galería</a>
+          <a href="/#contacto" class="border-b border-white/10 py-3 transition hover:text-orange-400">Contacto</a>
+          <a href="/#faq" class="py-3 transition hover:text-orange-400">FAQ</a>
         </>
       )}
     </div>
   </div>
+
   <script>
-  const updateInicioVisibility = () => {
+    const navbar = document.getElementById('site-navbar');
     const inicioItem = document.getElementById('nav-inicio-home');
-    if (!inicioItem) return;
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileButton = document.getElementById('mobile-menu-button');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
 
-    const showInicio = window.scrollY > 80;
+    let lastScrollY = window.scrollY;
+    let menuOpen = false;
 
-    if (showInicio) {
-      inicioItem.classList.remove('opacity-0', 'pointer-events-none');
-      inicioItem.classList.add('opacity-100');
-    } else {
-      inicioItem.classList.remove('opacity-100');
-      inicioItem.classList.add('opacity-0', 'pointer-events-none');
-    }
-  };
+    const setMenuState = (open) => {
+      if (!mobileMenu || !mobileButton || !iconOpen || !iconClose) return;
 
-  updateInicioVisibility();
-  window.addEventListener('scroll', updateInicioVisibility);
-</script>
+      menuOpen = open;
+
+      if (open) {
+        mobileMenu.classList.remove('max-h-0');
+        mobileMenu.classList.add('max-h-[500px]', 'border-white/10');
+        mobileButton.setAttribute('aria-expanded', 'true');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.remove('max-h-[500px]', 'border-white/10');
+        mobileMenu.classList.add('max-h-0');
+        mobileButton.setAttribute('aria-expanded', 'false');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      }
+    };
+
+    const updateInicioVisibility = () => {
+      if (!inicioItem) return;
+
+      const showInicio = window.scrollY > 80;
+
+      if (showInicio) {
+        inicioItem.classList.remove('opacity-0', 'pointer-events-none');
+        inicioItem.classList.add('opacity-100');
+      } else {
+        inicioItem.classList.remove('opacity-100');
+        inicioItem.classList.add('opacity-0', 'pointer-events-none');
+      }
+    };
+
+    const updateNavbarVisibility = () => {
+      if (!navbar) return;
+
+      const currentScrollY = window.scrollY;
+
+      if (menuOpen) {
+        navbar.classList.remove('-translate-y-full');
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      if (currentScrollY <= 20) {
+        navbar.classList.remove('-translate-y-full');
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        navbar.classList.add('-translate-y-full');
+      } else {
+        navbar.classList.remove('-translate-y-full');
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    mobileButton?.addEventListener('click', () => {
+      setMenuState(!menuOpen);
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuState(false));
+    });
+
+    updateInicioVisibility();
+    updateNavbarVisibility();
+
+    window.addEventListener('scroll', () => {
+      updateInicioVisibility();
+      updateNavbarVisibility();
+    });
+  </script>
 </nav>
