@@ -1,55 +1,54 @@
-# Stuttgart — Sitio web institucional
+# Stuttgart
 
-Sitio web desarrollado con **Astro**, **TypeScript** y **Tailwind CSS** para presentar los servicios, trabajos y proyectos de Stuttgart.
+Sitio institucional desarrollado con Astro para presentar servicios, proyectos y galeria tecnica de Stuttgart.
 
----
+## Stack
 
-## Stack tecnológico
+- Astro 6
+- TypeScript
+- Tailwind CSS 4
+- JavaScript para interacciones de UI
 
-- **Astro** → render estático y alto rendimiento
-- **TypeScript** → tipado y mantenibilidad
-- **Tailwind CSS** → sistema de diseño
-- **JavaScript (vanilla)** → interacciones (filtros, lightbox, carrusel)
+## Requisitos
 
----
+- Node.js 20.19 o superior
+- npm 10 o superior
 
-## Objetivo del proyecto
+## Scripts
 
-Este sitio está diseñado para:
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+```
 
-- mostrar servicios eléctricos y técnicos
-- presentar trabajos ejecutados de forma visual
-- mantener una estructura clara y escalable
-- priorizar performance y estética profesional
-
----
-
-## Estructura del proyecto
+## Estructura
 
 ```text
 /
-├── public/
-├── src/
-│   ├── assets/
-│   │   └── gallery/
-│   │       ├── mantenimiento/
-│   │       ├── mediciones/
-│   │       ├── stuttgart_proyecto_4/
-│   │       └── tableros/
-│   ├── components/
-│   │   ├── Footer.astro
-│   │   └── Navbar.astro
-│   ├── data/
-│   │   └── gallery.ts
-│   ├── layouts/
-│   │   └── Layout.astro
-│   ├── pages/
-│   │   ├── galeria.astro
-│   │   ├── index.astro
-│   │   ├── terminos.astro
-│   │   └── unite.astro
-│   ├── styles/
-│   └── types/
-│       └── gallery.ts
-├── package.json
-└── README.md
+|-- public/
+|-- src/
+|   |-- assets/
+|   |   |-- brands/
+|   |   |-- gallery/
+|   |   `-- service-icons/
+|   |-- components/
+|   |-- data/
+|   |-- layouts/
+|   |-- pages/
+|   `-- types/
+|-- astro.config.mjs
+|-- package.json
+`-- tsconfig.json
+```
+
+## Paginas principales
+
+- `/` inicio institucional
+- `/galeria` galeria tecnica con filtros, carrusel y lightbox
+
+## Notas
+
+- Las imagenes y textos de la galeria se administran desde `src/data/gallery.ts`.
+- Los recursos generados localmente por herramientas de Codex se excluyen en `.gitignore`.
