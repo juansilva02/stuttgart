@@ -1,8 +1,4 @@
-export type CategoriaGaleria =
-  | "tableros"
-  | "mediciones"
-  | "mantenimiento"
-  | "stuttgart_proyecto_4";
+export type CategoriaGaleria = "obra" | "tableros";
 
 export interface FiltroGaleria {
   key: "all" | CategoriaGaleria;

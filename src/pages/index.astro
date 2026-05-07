@@ -9,39 +9,91 @@ import WhatsAppFloat from "../components/WhatsAppFloat.astro";
 import logo from "../assets/logos/stuttgart-logo.svg";
 import tablero01 from "../assets/gallery/tableros/tablero-01.jpg";
 import medicion01 from "../assets/gallery/mediciones/medicion-01.jpg";
-import medicion02 from "../assets/gallery/mediciones/medicion-02.jpg";
+import medicion02 from "../assets/gallery/expoconstrucción/tablero-05.jpg";
 import p4_7 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-07.jpg";
-import genrodLogoUrl from "../assets/brands/genrod.svg?url";
+import threeMLogoUrl from "../assets/brands/3m.png?url";
+import genrodLogoUrl from "../assets/brands/genrod.png?url";
 import conextubeLogoUrl from "../assets/brands/conextube.svg?url";
+import dewaltLogoUrl from "../assets/brands/dewalt.png?url";
+import einhellLogoUrl from "../assets/brands/einhell.png?url";
+import gabexelLogoUrl from "../assets/brands/gabexel.png?url";
+import imsaLogoUrl from "../assets/brands/imsa.png?url";
+import kalopLogoUrl from "../assets/brands/kalop.png?url";
 import macroledLogoUrl from "../assets/brands/macroled.png?url";
 import trefiLogoUrl from "../assets/brands/trefi.png?url";
 import prysmianLogoUrl from "../assets/brands/prysmian.png?url";
 import cambreLogoUrl from "../assets/brands/cambre.png?url";
+import chintLogoUrl from "../assets/brands/chint.png?url";
+import moredoLogoUrl from "../assets/brands/moredo.png?url";
 import milwaukeeLogoUrl from "../assets/brands/milwaukee.png?url";
+import obrasElectricasIconUrl from "../assets/service-icons/obras-electricas.svg?url";
+import tablerosElectricosIconUrl from "../assets/service-icons/tableros-electricos.svg?url";
+import tramitesCertificacionesIconUrl from "../assets/service-icons/tramites-certificaciones.svg?url";
+import medicionesElectricasIconUrl from "../assets/service-icons/mediciones-electricas.svg?url";
+import seguridadElectronicaIconUrl from "../assets/service-icons/seguridad-electronica.svg?url";
+import mantenimientoPreventivoIconUrl from "../assets/service-icons/mantenimiento-preventivo.svg?url";
 
 const partnerBrands = [
   { name: "Genrod", href: "https://www.genrod.com.ar/home", logo: genrodLogoUrl, imgAlt: "Logo Genrod", logoClass: "h-9 w-auto" },
   { name: "Conextube", href: "https://www.conextube.com/", logo: conextubeLogoUrl, imgAlt: "Logo Conextube", logoClass: "h-8 w-auto" },
-  { name: "Moredo", href: "https://www.moredo.com.ar/", wordmarkClass: "text-white tracking-[0.28em]" },
-  { name: "Gabexel", href: "https://www.gabexel.com.ar/", wordmarkClass: "text-zinc-100 tracking-[0.18em]" },
+  { name: "Moredo", href: "https://www.moredo.com.ar/", logo: moredoLogoUrl, imgAlt: "Logo Moredo", logoClass: "h-11 w-auto max-w-none" },
+  { name: "Gabexel", href: "https://www.gabexel.com.ar/", logo: gabexelLogoUrl, imgAlt: "Logo Gabexel", logoClass: "h-11 w-auto max-w-none" },
   { name: "Bahco", href: "https://www.bahco.com/ar_es/", wordmarkClass: "text-[#f47b20] tracking-[0.22em]" },
   { name: "Macroled", href: "https://www.macroled.com.ar/", logo: macroledLogoUrl, imgAlt: "Logo Macroled", logoClass: "h-10 w-auto" },
-  { name: "IMSA", href: "https://imsa.com.ar/", wordmarkClass: "text-white tracking-[0.34em]" },
+  { name: "IMSA", href: "https://imsa.com.ar/", logo: imsaLogoUrl, imgAlt: "Logo IMSA", logoClass: "h-11 w-auto max-w-none" },
   { name: "Trefi", href: "https://trefi.com.ar/", logo: trefiLogoUrl, imgAlt: "Logo Trefi", logoClass: "h-8 w-auto" },
   { name: "Prysmian", href: "https://ar.prysmian.com/es", logo: prysmianLogoUrl, imgAlt: "Logo Prysmian", logoClass: "h-8 w-auto" },
-  { name: "3M", href: "https://www.3m.com.ar/3M/es_AR/inicio/", wordmarkClass: "text-[#ff3030] tracking-[0.22em]" },
+  { name: "3M", href: "https://www.3m.com.ar/3M/es_AR/inicio/", logo: threeMLogoUrl, imgAlt: "Logo 3M", logoClass: "h-10 w-auto max-w-none" },
   { name: "Schneider Electric", href: "https://www.se.com/ar/es/", wordmarkClass: "text-[#3fd05e] tracking-[0.12em]" },
-  { name: "Kalop", href: "https://kalop.com.ar/", wordmarkClass: "text-white tracking-[0.22em]" },
+  { name: "Kalop", href: "https://kalop.com.ar/", logo: kalopLogoUrl, imgAlt: "Logo Kalop", logoClass: "h-12 w-auto max-w-none" },
   { name: "Cambre", href: "https://www.cambre.com.ar/", logo: cambreLogoUrl, imgAlt: "Logo Cambre", logoClass: "h-9 w-auto" },
-  { name: "DeWalt", href: "https://ar.dewalt.global/", wordmarkClass: "text-[#ffd04d] tracking-[0.2em]" },
-  { name: "Einhell", href: "https://www.einhell.com.ar/", wordmarkClass: "text-[#e53935] tracking-[0.16em]" },
+  { name: "DeWalt", href: "https://ar.dewalt.global/", logo: dewaltLogoUrl, imgAlt: "Logo DeWalt", logoClass: "h-11 w-auto max-w-none" },
+  { name: "Einhell", href: "https://www.einhell.com.ar/", logo: einhellLogoUrl, imgAlt: "Logo Einhell", logoClass: "h-10 w-auto max-w-none" },
   { name: "Bosch", href: "https://www.bosch.com.ar/", wordmarkClass: "text-[#ea0016] tracking-[0.18em]" },
-  { name: "Chint", href: "https://www.chint.com.ar/", wordmarkClass: "text-[#f3b21a] tracking-[0.22em]" },
+  { name: "Chint", href: "https://www.chint.com.ar/", logo: chintLogoUrl, imgAlt: "Logo Chint", logoClass: "h-11 w-auto max-w-none" },
   { name: "Milwaukee", href: "https://milwaukee.ar/", logo: milwaukeeLogoUrl, imgAlt: "Logo Milwaukee", logoClass: "h-9 w-auto" },
   { name: "Siemens", href: "https://www.siemens.com/", wordmarkClass: "text-[#00c1d4] tracking-[0.22em]" },
   { name: "ABB", href: "https://new.abb.com/south-america", wordmarkClass: "text-[#ff2a2a] tracking-[0.22em]" },
 ];
 const partnerBrandsLoop = [...partnerBrands, ...partnerBrands];
+const services = [
+  {
+    titulo: "Obras el\u00e9ctricas",
+    texto: "Obras comerciales, industriales y multi-familiares con enfoque en calidad y seguridad el\u00e9ctrica.",
+    icon: obrasElectricasIconUrl,
+    iconAlt: "Icono de alto voltaje",
+  },
+  {
+    titulo: "Tableros el\u00e9ctricos",
+    texto: "Montaje, conexionado, adecuaci\u00f3n y puesta en servicio de tableros el\u00e9ctricos de distribuci\u00f3n, maniobra, protecci\u00f3n y control.",
+    icon: tablerosElectricosIconUrl,
+    iconAlt: "Icono de cables",
+  },
+  {
+    titulo: "Tramites y certificaciones",
+    texto: "Documentaci\u00f3n t\u00e9cnica, planos, certificaciones, DCI, Res. 900/15 y habilitaci\u00f3n de medidores.",
+    icon: tramitesCertificacionesIconUrl,
+    iconAlt: "Icono de documento",
+  },
+  {
+    titulo: "Mediciones el\u00e9ctricas",
+    texto: "Medici\u00f3n de puesta a tierra, potencia, calidad de energ\u00eda y controles t\u00e9cnicos para validar condiciones operativas y de seguridad el\u00e9ctrica.",
+    icon: medicionesElectricasIconUrl,
+    iconAlt: "Icono de medidor",
+  },
+  {
+    titulo: "Seguridad electr\u00f3nica",
+    texto: "Instalaci\u00f3n de camaras de seguridad, sistemas de control de acceso, alarmas, cercos y otros dispositivos electr\u00f3nicos para mejorar la seguridad f\u00edsica en instalaciones industriales, comerciales o residenciales.",
+    icon: seguridadElectronicaIconUrl,
+    iconAlt: "Icono de casco",
+  },
+  {
+    titulo: "Mantenimiento preventivo y correctivo",
+    texto: "Mantenimiento preventivo y correctivo de instalaciones el\u00e9ctricas, tableros, sistemas de protecci\u00f3n y componentes relacionados para mejorar confiabilidad operativa y seguridad el\u00e9ctrica.",
+    icon: mantenimientoPreventivoIconUrl,
+    iconAlt: "Icono de valla de seguridad",
+  },
+];
 ---
  
 <Layout title="Stuttgart Ingeniería Electrónica">
@@ -172,35 +224,10 @@ const partnerBrandsLoop = [...partnerBrands, ...partnerBrands];
       </h2>
  
       <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {[
-          {
-            titulo: "Obras eléctricas",
-            texto: "Obras comerciales, industriales y multi-familiares con enfoque en calidad y seguridad eléctrica.",
-          },
-          {
-            titulo: "Tableros eléctricos",
-            texto: "Montaje, conexionado, adecuación y puesta en servicio de tableros eléctricos de distribución, maniobra, protección y control.",
-          },
-          {
-            titulo: "Tramites y certificaciones",
-            texto: "Documentación técnica, planos, certificaciones, DCI, Res. 900/15 y habilitación de medidores.",
-          },
-          {
-            titulo: "Mediciones eléctricas",
-            texto: "Medición de puesta a tierra, potencia, calidad de energía y controles técnicos para validar condiciones operativas y de seguridad eléctrica.",
-          },
-          {
-            titulo: "Seguridad electrónica",
-            texto: "Instalación de camaras de seguridad, sistemas de control de acceso, alarmas, cercos y otros dispositivos electrónicos para mejorar la seguridad física en instalaciones industriales, comerciales o residenciales.",
-          },
-          {
-            titulo: "Mantenimiento preventivo y correctivo",
-            texto: "Mantenimiento preventivo y correctivo de instalaciones eléctricas, tableros, sistemas de protección y componentes relacionados para mejorar confiabilidad operativa y seguridad eléctrica.",
-          },
-        ].map((s) => (
+        {services.map((s) => (
           <article class="reveal reveal-up rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 p-6 transition hover:border-orange-400/40 hover:scale-[1.02]">
             <div class="mb-4 w-10 h-10 rounded-xl bg-orange-400/10 border border-orange-400/20 flex items-center justify-center">
-              <span class="w-2.5 h-2.5 rounded-full bg-orange-400"></span>
+              <img src={s.icon} alt={s.iconAlt} class="h-5 w-5" />
             </div>
             <h3 class="text-xl font-semibold mb-3">{s.titulo}</h3>
             <p class="text-zinc-400 leading-7 text-sm">{s.texto}</p>
@@ -226,7 +253,8 @@ const partnerBrandsLoop = [...partnerBrands, ...partnerBrands];
       </h2>
  
       <div class="grid md:grid-cols-2 gap-6">
-        <!-- Proyecto 01 -->
+        <!--
+        Proyecto 01
         <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
           <div class="aspect-16/10 w-full overflow-hidden bg-zinc-950">
             <Image
@@ -247,8 +275,8 @@ const partnerBrandsLoop = [...partnerBrands, ...partnerBrands];
             </p>
           </div>
         </article>
- 
-        <!-- Proyecto 02 -->
+
+        Proyecto 02
         <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
           <div class="aspect-16/10 w-full overflow-hidden bg-zinc-950">
             <Image
@@ -269,6 +297,7 @@ const partnerBrandsLoop = [...partnerBrands, ...partnerBrands];
             </p>
           </div>
         </article>
+        -->
  
         <!-- Proyecto 03 -->
         <article class="reveal reveal-up group overflow-hidden rounded-3xl border border-white/10 bg-linear-to-br from-zinc-900 to-zinc-950 transition hover:border-orange-400/40">
@@ -281,13 +310,12 @@ const partnerBrandsLoop = [...partnerBrands, ...partnerBrands];
             />
           </div>
           <div class="p-6">
-            <p class="text-orange-400 text-[11px] uppercase tracking-[0.2em] mb-2">Verificación técnica</p>
+            <p class="text-orange-400 text-[11px] uppercase tracking-[0.2em] mb-2">Tableros eléctricos</p>
             <h3 class="text-xl font-semibold mb-3 group-hover:text-orange-400 transition">
-              Proyecto 03 · Verificación técnica
+              Tablero eléctricos
             </h3>
             <p class="text-zinc-400 leading-7 text-sm">
-              Relevamiento, control y documentación técnica para validar condiciones
-              operativas y de seguridad en instalaciones existentes.
+              Montaje, conexionado, adecuación y puesta en servicio de tableros eléctricos de distribución, maniobra, protección y control.
             </p>
           </div>
         </article>
@@ -305,11 +333,10 @@ const partnerBrandsLoop = [...partnerBrands, ...partnerBrands];
           <div class="p-6">
             <p class="text-orange-400 text-[11px] uppercase tracking-[0.2em] mb-2">Instalaciones eléctricas</p>
             <h3 class="text-xl font-semibold mb-3 group-hover:text-orange-400 transition">
-              Proyecto 04 · Instalaciones eléctricas
+              Instalaciones eléctricas
             </h3>
             <p class="text-zinc-400 leading-7 text-sm">
-              Intervención integral de luminaria en edificio comercial, incluyendo
-              montaje, conexionado y puesta en servicio de tableros de distribución y maniobra.
+              Obras comerciales, industriales y multi-familiares con enfoque en calidad y seguridad eléctrica.
             </p>
           </div>
         </article>
@@ -672,3 +699,5 @@ const partnerBrandsLoop = [...partnerBrands, ...partnerBrands];
     details p { transition: opacity 0.2s ease; }
   }
 </style>
+
+

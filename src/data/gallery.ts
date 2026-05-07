@@ -1,64 +1,55 @@
-// ─── IMPORTS DE IMÁGENES ─────────────────────────────────────────────────────
-// Astro optimiza automáticamente todas las imágenes importadas desde src/assets
- 
-// Tableros
-import tablero01 from "../assets/gallery/tableros/tablero-01.jpg";
-import tablero02 from "../assets/gallery/tableros/tablero-02.jpg";
-import tablero03 from "../assets/gallery/tableros/tablero-03.jpg";
-import tablero04 from "../assets/gallery/tableros/tablero-04.jpg";
-import tablero05 from "../assets/gallery/tableros/tablero-05.jpg";
-import tablero06 from "../assets/gallery/tableros/tablero-06.jpg";
-import tablero07 from "../assets/gallery/tableros/tablero-07.jpg";
- 
-// Mediciones
-import medicion01 from "../assets/gallery/mediciones/medicion-01.jpg";
-import medicion02 from "../assets/gallery/mediciones/medicion-02.jpg";
-import medicion03 from "../assets/gallery/mediciones/medicion-03.jpg";
-import medicion04 from "../assets/gallery/mediciones/medicion-04.jpg";
-import medicion05 from "../assets/gallery/mediciones/medicion-05.jpg";
-import medicion06 from "../assets/gallery/mediciones/medicion-06.jpg";
-import medicion07 from "../assets/gallery/mediciones/medicion-07.jpg";
-import medicion08 from "../assets/gallery/mediciones/medicion-08.jpg";
-import medicion09 from "../assets/gallery/mediciones/medicion-09.jpg";
-import medicion10 from "../assets/gallery/mediciones/medicion-10.jpg";
-import medicion11 from "../assets/gallery/mediciones/medicion-11.jpg";
-import medicion12 from "../assets/gallery/mediciones/medicion-12.jpg";
-import medicion13 from "../assets/gallery/mediciones/medicion-13.jpg";
-import medicion14 from "../assets/gallery/mediciones/medicion-14.jpg";
-import medicionIMG  from "../assets/gallery/mediciones/IMG_3741.jpg";
- 
-// Mantenimiento
-import mant01 from "../assets/gallery/mantenimiento/mantenimiento-01.jpg";
-import mant02 from "../assets/gallery/mantenimiento/mantenimiento-02.jpg";
-import mant03 from "../assets/gallery/mantenimiento/mantenimiento-03.jpg";
-import mant04 from "../assets/gallery/mantenimiento/mantenimiento-04.jpg";
-import mant05 from "../assets/gallery/mantenimiento/mantenimiento-05.jpg";
-import mant06 from "../assets/gallery/mantenimiento/mantenimiento-06.jpg";
-import mant07 from "../assets/gallery/mantenimiento/mantenimiento-07.jpg";
-import mant08 from "../assets/gallery/mantenimiento/mantenimiento-08.jpg";
-import mant09 from "../assets/gallery/mantenimiento/mantenimiento-09.jpg";
- 
-// Proyecto 4
-import p4_main  from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-01.jpg";
-import p4_2     from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-02.jpg";
-import p4_3     from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-03.jpg";
-import p4_4     from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-04.jpg";
-import p4_5     from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-05.jpg";
-import p4_6     from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-06.jpg";
-import p4_7     from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-07.jpg";
-import p4_8     from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-08.jpg";
-import p4_9     from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-09.jpg";
-import p4_10    from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-10.jpg";
-import p4_11    from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-11.jpg";
-import p4_12    from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-12.jpg";
-import p4_13    from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-13.jpg";
- 
+import tablero01 from "../assets/gallery/expoconstrucción/tablero-01.jpg";
+import tablero02 from "../assets/gallery/expoconstrucción/tablero-02.jpg";
+import tablero03 from "../assets/gallery/expoconstrucción/tablero-03.jpg";
+import tablero04 from "../assets/gallery/expoconstrucción/tablero-04.jpg";
+import tablero05 from "../assets/gallery/expoconstrucción/tablero-05.jpg";
+import tablero06 from "../assets/gallery/expoconstrucción/tablero-06.jpg";
+import tablero07 from "../assets/gallery/expoconstrucción/tablero-07.jpg";
+import tablero08 from "../assets/gallery/expoconstrucción/tablero-08.jpg";
+import tablero09 from "../assets/gallery/expoconstrucción/tablero-09.jpg";
+import tablero10 from "../assets/gallery/expoconstrucción/tablero-10.jpg";
+import tablero11 from "../assets/gallery/expoconstrucción/tablero-11.jpg";
+import cableado01 from "../assets/gallery/expoconstrucción/cableado-01.jpg";
+import cableado02 from "../assets/gallery/expoconstrucción/cableado-02.jpg";
+import cableado03 from "../assets/gallery/expoconstrucción/cableado-03.jpg";
+import cableado04 from "../assets/gallery/expoconstrucción/cableado-04.jpg";
+import cableado05 from "../assets/gallery/expoconstrucción/cableado-05.jpg";
+import cableado06 from "../assets/gallery/expoconstrucción/cableado-06.jpg";
+import iluminacion01 from "../assets/gallery/expoconstrucción/iluminacion-01.jpg";
+import obra01 from "../assets/gallery/expoconstrucción/obra-01.jpg";
+import obra02 from "../assets/gallery/expoconstrucción/obra-02.jpg";
+import terminacion00 from "../assets/gallery/expoconstrucción/terminacion-00.jpg";
+import terminacion01 from "../assets/gallery/expoconstrucción/terminacion-01.jpg";
+import terminacion02 from "../assets/gallery/expoconstrucción/terminacion-02.jpg";
+import terminacion03 from "../assets/gallery/expoconstrucción/terminacion-03.jpg";
+import terminacion04 from "../assets/gallery/expoconstrucción/terminacion-04.jpg";
+import terminacion05 from "../assets/gallery/expoconstrucción/terminacion-05.jpg";
+import terminacion06 from "../assets/gallery/expoconstrucción/terminacion-06.jpg";
+import terminacion07 from "../assets/gallery/expoconstrucción/terminacion-07.jpg";
+import terminacion08 from "../assets/gallery/expoconstrucción/terminacion-08.jpg";
+import terminacion09 from "../assets/gallery/expoconstrucción/terminacion-09.jpg";
+import terminacion10 from "../assets/gallery/expoconstrucción/terminacion-10.jpg";
+import terminacion11 from "../assets/gallery/expoconstrucción/terminacion-11.jpg";
+import terminacion12 from "../assets/gallery/expoconstrucción/terminacion-12.jpg";
+
+import p4_main from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-01.jpg";
+import p4_2 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-02.jpg";
+import p4_3 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-03.jpg";
+import p4_4 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-04.jpg";
+import p4_5 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-05.jpg";
+import p4_6 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-06.jpg";
+import p4_7 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-07.jpg";
+import p4_8 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-08.jpg";
+import p4_9 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-09.jpg";
+import p4_10 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-10.jpg";
+import p4_11 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-11.jpg";
+import p4_12 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-12.jpg";
+import p4_13 from "../assets/gallery/stuttgart_proyecto_4/proyecto_4-13.jpg";
+
 import type { ImageMetadata } from "astro";
- 
-// ─── TIPOS ───────────────────────────────────────────────────────────────────
- 
-export type Categoria = "tableros" | "mediciones" | "mantenimiento" | "proyecto4";
- 
+
+export type Categoria = "obra" | "tableros";
+
 export interface GalleryItem {
   src: ImageMetadata;
   titulo: string;
@@ -67,35 +58,26 @@ export interface GalleryItem {
   featured?: boolean;
   position?: string;
 }
- 
+
 export interface CarruselItem {
   src: ImageMetadata;
   titulo: string;
   descripcion: string;
   position?: string;
 }
- 
-// ─── FILTROS ─────────────────────────────────────────────────────────────────
- 
+
 export const filtrosGaleria = [
-  { key: "all",          label: "Todos"         },
-  { key: "tableros",     label: "Tableros"      },
-  { key: "mediciones",   label: "Mediciones"    },
-  { key: "mantenimiento",label: "Mantenimiento" },
-  { key: "proyecto4",    label: "Proyecto 4"    },
+  { key: "all", label: "Todos" },
+  { key: "tableros", label: "Tableros" },
+  { key: "obra", label: "Obra" },
 ] as const;
- 
+
 export const categoriaLabel: Record<Categoria, string> = {
-  tableros:      "Tableros eléctricos",
-  mediciones:    "Mediciones y verificación",
-  mantenimiento: "Mantenimiento técnico",
-  proyecto4:     "Proyecto 4",
+  obra: "Obra",
+  tableros: "Tableros eléctricos",
 };
- 
-// ─── GALERÍA PRINCIPAL ───────────────────────────────────────────────────────
- 
+
 export const imagenesGaleria: GalleryItem[] = [
-  // — Tableros —
   {
     src: tablero01,
     titulo: "Tablero de distribución",
@@ -140,176 +122,222 @@ export const imagenesGaleria: GalleryItem[] = [
     descripcion: "Verificación y puesta en servicio de tablero eléctrico tras instalación completa.",
     categoria: "tableros",
   },
- 
-  // — Mediciones —
   {
-    src: medicion01,
+    src: cableado01,
     titulo: "Medición eléctrica en campo",
     descripcion: "Relevamiento de parámetros eléctricos sobre instalación existente en sitio.",
-    categoria: "mediciones",
+    categoria: "obra",
     featured: true,
   },
   {
-    src: medicion02,
+    src: cableado02,
     titulo: "Control de continuidad",
     descripcion: "Verificación de continuidad en conductores y conexiones de la instalación.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion03,
+    src: cableado03,
     titulo: "Verificación de tensión",
     descripcion: "Control de niveles de tensión en puntos clave del sistema eléctrico.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion04,
+    src: cableado04,
     titulo: "Medición de corriente",
     descripcion: "Registro de demanda y verificación de cargas en circuitos de distribución.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion05,
+    src: cableado05,
     titulo: "Inspección técnica",
     descripcion: "Relevamiento técnico de condiciones generales de la instalación eléctrica.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion06,
+    src: cableado06,
     titulo: "Control de aislación",
     descripcion: "Medición de resistencia de aislación en conductores y equipamiento.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion07,
+    src: obra01,
     titulo: "Verificación de instalación",
     descripcion: "Control final de parámetros antes de habilitación operativa del sistema.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion08,
+    src: obra02,
     titulo: "Análisis de red",
     descripcion: "Análisis de calidad de energía y parámetros de red en instalación comercial.",
-    categoria: "mediciones",
+    categoria: "obra",
     featured: true,
   },
   {
-    src: medicion09,
+    src: iluminacion01,
     titulo: "Diagnóstico eléctrico",
     descripcion: "Evaluación técnica de instalación para detección de desvíos y condiciones de riesgo.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion10,
+    src: terminacion00,
     titulo: "Medición de demanda",
     descripcion: "Registro de demanda máxima y verificación de capacidad de la instalación.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion11,
+    src: terminacion01,
     titulo: "Control normativo",
     descripcion: "Verificación de cumplimiento normativo sobre instalación eléctrica existente.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion12,
+    src: terminacion02,
     titulo: "Relevamiento de campo",
     descripcion: "Documentación técnica de instalación para archivo y trazabilidad.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion13,
+    src: terminacion03,
     titulo: "Inspección final",
     descripcion: "Control final previo a habilitación con registro fotográfico y documental.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicion14,
+    src: terminacion04,
     titulo: "Verificación PAT",
     descripcion: "Control de puesta a tierra y verificación de continuidad del conductor de protección.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
   {
-    src: medicionIMG,
+    src: terminacion05,
     titulo: "Control en campo",
     descripcion: "Medición y verificación técnica en instalación industrial.",
-    categoria: "mediciones",
+    categoria: "obra",
   },
- 
-  // — Mantenimiento —
   {
-    src: mant01,
+    src: terminacion06,
     titulo: "Mantenimiento preventivo",
     descripcion: "Limpieza, ajuste de bornes y control visual de tablero eléctrico en servicio.",
-    categoria: "mantenimiento",
+    categoria: "obra",
     featured: true,
   },
   {
-    src: mant02,
+    src: terminacion07,
     titulo: "Revisión de conexiones",
     descripcion: "Verificación y reapriete de conexiones en tablero para prevenir fallas térmicas.",
-    categoria: "mantenimiento",
+    categoria: "obra",
   },
   {
-    src: mant03,
+    src: terminacion08,
     titulo: "Sustitución de componentes",
     descripcion: "Reemplazo de elementos deteriorados para restablecer condiciones originales de operación.",
-    categoria: "mantenimiento",
+    categoria: "obra",
   },
   {
-    src: mant04,
+    src: terminacion09,
     titulo: "Diagnóstico termográfico",
     descripcion: "Detección de puntos calientes mediante análisis de temperatura en tablero activo.",
-    categoria: "mantenimiento",
+    categoria: "obra",
   },
   {
-    src: mant05,
+    src: terminacion10,
     titulo: "Mantenimiento correctivo",
     descripcion: "Intervención correctiva sobre falla detectada en instalación eléctrica existente.",
-    categoria: "mantenimiento",
+    categoria: "obra",
   },
   {
-    src: mant06,
+    src: terminacion11,
     titulo: "Limpieza técnica",
     descripcion: "Limpieza y descontaminación de tablero con riesgo de falla por suciedad acumulada.",
-    categoria: "mantenimiento",
+    categoria: "obra",
   },
   {
-    src: mant07,
+    src: terminacion12,
     titulo: "Informe de estado",
     descripcion: "Documentación del estado técnico del tablero tras la intervención de mantenimiento.",
-    categoria: "mantenimiento",
+    categoria: "obra",
   },
- 
-  // — Proyecto 4 —
   {
-    src: p4_main,
+    src: tablero08,
     titulo: "Stuttgart Proyecto 4",
-    descripcion: "Vista general de la intervención de luminaria en edificio comercial.",
-    categoria: "proyecto4",
+    descripcion: "Vista general de la intervención técnica registrada dentro del relevamiento de obra.",
+    categoria: "obra",
     featured: true,
+  },
+  {
+    src: p4_2,
+    titulo: "Detalle de obra",
+    descripcion: "Montaje de artefactos de iluminación con criterio técnico y acabado prolijo.",
+    categoria: "obra",
+  },
+  {
+    src: p4_3,
+    titulo: "Cableado de circuitos",
+    descripcion: "Cableado y conexionado de circuitos de iluminación según plano de instalación.",
+    categoria: "obra",
+  },
+  {
+    src: p4_4,
+    titulo: "Fijación de artefactos",
+    descripcion: "Instalación de artefactos en cielorraso con soporte estructural adecuado.",
+    categoria: "obra",
+  },
+  {
+    src: p4_5,
+    titulo: "Control de instalación",
+    descripcion: "Verificación de funcionamiento y control de circuitos tras el montaje.",
+    categoria: "obra",
+  },
+  {
+    src: p4_6,
+    titulo: "Iluminación de emergencia",
+    descripcion: "Instalación de luminarias de emergencia según requerimiento normativo.",
+    categoria: "obra",
   },
   {
     src: p4_7,
     titulo: "Instalación de luminarias",
     descripcion: "Montaje y conexionado de luminarias en área de circulación del edificio.",
-    categoria: "proyecto4",
+    categoria: "obra",
   },
   {
-    src: p4_9,
+    src: p4_8,
+    titulo: "Prueba de iluminación",
+    descripcion: "Verificación de encendido y niveles lumínicos tras finalizar la instalación.",
+    categoria: "obra",
+  },
+  {
+    src: tablero10,
     titulo: "Tablero de distribución Proy. 4",
     descripcion: "Instalación del tablero de distribución para el circuito de iluminación.",
-    categoria: "proyecto4",
+    categoria: "tableros",
   },
   {
-    src: p4_10,
+    src: tablero11,
     titulo: "Puesta en servicio Proy. 4",
     descripcion: "Verificación final y puesta en servicio del sistema de iluminación.",
-    categoria: "proyecto4",
+    categoria: "obra",
+  },
+  {
+    src: p4_11,
+    titulo: "Terminación de obra",
+    descripcion: "Terminaciones y acabados de la instalación con criterio estético y técnico.",
+    categoria: "obra",
+  },
+  {
+    src: p4_12,
+    titulo: "Documentación de obra",
+    descripcion: "Registro fotográfico del estado final para archivo y entrega al cliente.",
+    categoria: "obra",
+  },
+  {
+    src: p4_13,
+    titulo: "Entrega de obra",
+    descripcion: "Proyecto finalizado y entregado en condiciones de operación normal.",
+    categoria: "obra",
   },
 ];
- 
-// ─── CARRUSEL PROYECTO 4 ─────────────────────────────────────────────────────
- 
+
 export const proyecto4Carrusel: CarruselItem[] = [
   {
     src: p4_main,
