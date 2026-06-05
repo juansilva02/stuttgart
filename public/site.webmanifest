@@ -1,6 +1,7 @@
 {
-  "name": "Stuttgart Ingenieria",
+  "name": "Stuttgart Soluciones Eléctricas",
   "short_name": "Stuttgart",
+  "description": "Obras eléctricas, tableros, mediciones y mantenimiento en CABA y GBA.",
   "icons": [
     {
       "src": "/icon-192.png",

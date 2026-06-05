@@ -3,9 +3,13 @@ import "../styles/global.css";
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title = "Stuttgart" } = Astro.props;
+const {
+  title = "Stuttgart Soluciones Eléctricas",
+  description = "Empresa de soluciones eléctricas en CABA y GBA. Obras eléctricas, tableros de distribución, mediciones, certificaciones DCI y mantenimiento preventivo.",
+} = Astro.props;
 ---
 
 <html lang="es">
@@ -14,12 +18,66 @@ const { title = "Stuttgart" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="theme-color" content="#111111" />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="ingeniería eléctrica Buenos Aires, obras eléctricas CABA GBA, tableros eléctricos distribución, mediciones eléctricas, certificación DCI, Resolución 900/15, mantenimiento eléctrico preventivo, seguridad electrónica, instalaciones eléctricas comerciales industriales, puesta a tierra, calidad de energía, electricista matriculado, Stuttgart soluciones eléctricas"
+    />
+    <meta name="author" content="Stuttgart Soluciones Eléctricas" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Stuttgart Soluciones Eléctricas" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-48x48.png" sizes="48x48" type="image/png" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- JSON-LD: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Stuttgart Soluciones Eléctricas",
+      "description": "Empresa de soluciones eléctricas en CABA y GBA. Obras eléctricas, tableros de distribución, mediciones eléctricas, certificaciones DCI, mantenimiento preventivo y seguridad electrónica.",
+      "url": "https://stuttingenieria.com",
+      "telephone": "+54-911-2392-1232",
+      "email": "presupuestos@stuttingenieria.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buenos Aires",
+        "addressRegion": "Buenos Aires",
+        "addressCountry": "AR"
+      },
+      "areaServed": ["CABA", "GBA", "Buenos Aires"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios eléctricos",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Obras eléctricas" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tableros eléctricos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mediciones eléctricas" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Certificación DCI y Res. 900/15" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento preventivo y correctivo" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seguridad electrónica" } }
+        ]
+      },
+      "sameAs": [
+        "https://www.instagram.com/stuttingenieria/"
+      ]
+    }
+    </script>
   </head>
   <body>
     <slot />

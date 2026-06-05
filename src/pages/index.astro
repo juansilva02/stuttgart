@@ -96,7 +96,10 @@ const services = [
 ];
 ---
  
-<Layout title="Stuttgart Ingeniería Electrónica">
+<Layout
+  title="Stuttgart | Soluciones Eléctricas en CABA y GBA"
+  description="Stuttgart — soluciones eléctricas en CABA y GBA. Obras eléctricas, tableros de distribución, mediciones, certificaciones DCI, mantenimiento preventivo y seguridad electrónica."
+>
   <Navbar isHome={true} currentPage="home" />
  
   <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
@@ -111,7 +114,7 @@ const services = [
     <div class="relative z-10 max-w-5xl text-center reveal reveal-up">
       <Image
         src={logo}
-        alt="Stuttgart Ingeniería Electrónica"
+        alt="Stuttgart Soluciones Eléctricas"
         class="mb-6 h-16 md:h-20 w-auto mx-auto"
       />
  
@@ -672,24 +675,52 @@ const services = [
       opacity: 1;
       transform: translateY(0);
     }
+    /* Carrusel mobile: máscara menos agresiva, cards más compactas */
+    .partner-marquee {
+      mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    }
     .partner-track {
-      gap: 0.75rem;
-      animation-duration: 32s;
+      gap: 0.625rem;
+      animation-duration: 30s;
     }
     .partner-card {
-      min-width: 10.5rem;
-      height: 4.75rem;
-      border-radius: 1rem;
-      padding: 1rem 1.1rem;
+      min-width: 9.5rem;
+      height: 4.5rem;
+      border-radius: 0.875rem;
+      padding: 0.875rem 1rem;
     }
     .partner-wordmark {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
     }
     .rounded-3xl,
     .rounded-2xl { border-radius: 1rem; }
     .py-24 {
       padding-top: 3.5rem !important;
       padding-bottom: 3.5rem !important;
+    }
+  }
+
+  /* ── MOBILE PEQUEÑO (< 480px) ── */
+  @media (max-width: 480px) {
+    .partner-marquee {
+      mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+    }
+    .partner-track {
+      gap: 0.5rem;
+      animation-duration: 26s;
+    }
+    .partner-card {
+      min-width: 8.25rem;
+      height: 4rem;
+      padding: 0.75rem 0.875rem;
+    }
+    .partner-logo {
+      max-height: 2.25rem;
+    }
+    .partner-wordmark {
+      font-size: 0.75rem;
     }
   }
  

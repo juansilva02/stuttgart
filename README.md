@@ -1,6 +1,6 @@
-# Stuttgart
+# Stuttgart Soluciones Eléctricas
 
-Sitio institucional desarrollado con Astro para presentar servicios, proyectos y galeria tecnica de Stuttgart.
+Sitio institucional desarrollado con Astro para presentar los servicios, proyectos y galería técnica de Stuttgart Soluciones Eléctricas — empresa de ingeniería eléctrica en CABA y GBA.
 
 ## Stack
 
@@ -32,6 +32,7 @@ npm run preview
 |   |-- assets/
 |   |   |-- brands/
 |   |   |-- gallery/
+|   |   |-- logos/
 |   |   `-- service-icons/
 |   |-- components/
 |   |-- data/
@@ -43,12 +44,22 @@ npm run preview
 `-- tsconfig.json
 ```
 
-## Paginas principales
+## Páginas
 
-- `/` inicio institucional
-- `/galeria` galeria tecnica con filtros, carrusel y lightbox
+- `/` inicio institucional con hero, servicios, proyectos, marcas, contacto y FAQ
+- `/galeria` galería técnica con filtros, carrusel y lightbox
+- `/unite` formulario de contacto para incorporación al equipo
+- `/terminos` términos y condiciones
+- `/privacidad` política de privacidad
+
+## SEO
+
+El layout base (`src/layouts/Layout.astro`) incluye:
+- `<meta name="description">` y `<meta name="keywords">` configurables por página
+- Open Graph y Twitter Card
+- JSON-LD `LocalBusiness` con datos estructurados para Google AI
 
 ## Notas
 
-- Las imagenes y textos de la galeria se administran desde `src/data/gallery.ts`.
+- Las imágenes y textos de la galería se administran desde `src/data/gallery.ts`.
 - Los recursos generados localmente por herramientas de Codex se excluyen en `.gitignore`.
