@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "Stuttgart Soluciones Eléctricas",
-  description = "Empresa de soluciones eléctricas en CABA y GBA. Obras eléctricas, tableros de distribución, mediciones, certificaciones DCI y mantenimiento preventivo.",
+  title = "Instalaciones Eléctricas · CABA y GBA · Stuttgart Tableros para Obras",
+  description = "Stuttgart — instalaciones eléctricas en CABA y GBA. Tableros de distribución y maniobra, obras comerciales e industriales, mediciones, certificaciones DCI, mantenimiento preventivo y seguridad electrónica. Técnico matriculado.",
 } = Astro.props;
 ---
 
@@ -21,7 +21,7 @@ const {
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="ingeniería eléctrica Buenos Aires, obras eléctricas CABA GBA, tableros eléctricos distribución, mediciones eléctricas, certificación DCI, Resolución 900/15, mantenimiento eléctrico preventivo, seguridad electrónica, instalaciones eléctricas comerciales industriales, puesta a tierra, calidad de energía, electricista matriculado, Stuttgart soluciones eléctricas"
+      content="instalaciones eléctricas CABA, instalaciones eléctricas GBA, tableros eléctricos Buenos Aires, tableros para obras, obras eléctricas comerciales, obras eléctricas industriales, mediciones eléctricas, certificación DCI Buenos Aires, Resolución 900/15, puesta a tierra, calidad de energía, mantenimiento eléctrico preventivo, seguridad electrónica, cámaras de seguridad, electricista matriculado Buenos Aires, Stuttgart ingeniería eléctrica"
     />
     <meta name="author" content="Stuttgart Soluciones Eléctricas" />
     <meta name="robots" content="index, follow" />
@@ -50,7 +50,9 @@ const {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Stuttgart Soluciones Eléctricas",
-      "description": "Empresa de soluciones eléctricas en CABA y GBA. Obras eléctricas, tableros de distribución, mediciones eléctricas, certificaciones DCI, mantenimiento preventivo y seguridad electrónica.",
+      "alternateName": "Stuttgart Ingeniería",
+      "slogan": "Tableros, obras e instalaciones eléctricas en CABA y GBA",
+      "description": "Empresa de instalaciones eléctricas en CABA y GBA. Tableros de distribución y maniobra para obras comerciales e industriales, mediciones eléctricas, certificaciones DCI, Res. 900/15, mantenimiento preventivo y seguridad electrónica. Técnico matriculado.",
       "url": "https://stuttingenieria.com",
       "telephone": "+54-911-2392-1232",
       "email": "presupuestos@stuttingenieria.com",
@@ -60,17 +62,36 @@ const {
         "addressRegion": "Buenos Aires",
         "addressCountry": "AR"
       },
-      "areaServed": ["CABA", "GBA", "Buenos Aires"],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -34.6037,
+        "longitude": -58.3816
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Ciudad Autónoma de Buenos Aires" },
+        { "@type": "AdministrativeArea", "name": "Gran Buenos Aires" }
+      ],
+      "knowsAbout": [
+        "instalaciones eléctricas",
+        "tableros eléctricos",
+        "obras eléctricas",
+        "mediciones eléctricas",
+        "puesta a tierra",
+        "certificación DCI",
+        "Resolución 900/15",
+        "mantenimiento eléctrico preventivo",
+        "seguridad electrónica"
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Servicios eléctricos",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Obras eléctricas" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tableros eléctricos" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mediciones eléctricas" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Certificación DCI y Res. 900/15" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento preventivo y correctivo" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seguridad electrónica" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Obras eléctricas comerciales e industriales" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tableros eléctricos de distribución y maniobra" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mediciones eléctricas y puesta a tierra" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Certificación DCI y Resolución 900/15" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento eléctrico preventivo y correctivo" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seguridad electrónica y cámaras de vigilancia" } }
         ]
       },
       "sameAs": [
